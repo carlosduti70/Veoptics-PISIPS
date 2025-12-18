@@ -24,4 +24,5 @@ public final class Rol {
 		return "Roles [id_rol=" + id_rol + ", nombre_rol=" + nombre_rol + "]";
 	}
 	
+	
 }

@@ -22,4 +22,5 @@ public class RolJpa implements Serializable{
 		private int id_rol;
 		@Column(length = 200)
 		private String nombre_rol;
+		
 }
