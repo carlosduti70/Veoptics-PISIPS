@@ -1,6 +1,6 @@
 package com.uisrael.veoptics.dominio.entidades;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 
 public final class Optometrista {
 	private final int idOptometrista;
