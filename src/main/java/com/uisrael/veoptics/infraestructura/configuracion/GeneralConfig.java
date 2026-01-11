@@ -13,6 +13,7 @@ import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.Optometrist
 import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.PacienteRepositorioImpl;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IOptometristaJpaMapper;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IPacienteJpaMapper;
+import com.uisrael.veoptics.infraestructura.repositorios.IOptometristaJpaRepositorio;
 import com.uisrael.veoptics.infraestructura.repositorios.IPacienteJpaRepositorio;
 
 @Configuration
