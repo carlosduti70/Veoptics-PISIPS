@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import com.uisrael.veoptics.dominio.entidades.Optometrista;
 import com.uisrael.veoptics.dominio.repositorios.IOptometristaRepositorio;
+import com.uisrael.veoptics.infraestructura.persistencia.jpa.OptometristaJpa;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IOptometristaJpaMapper;
+import com.uisrael.veoptics.infraestructura.repositorios.IOptometristaJpaRepositorio;
 
 public class OptometristaRepositorioImpl implements IOptometristaRepositorio {
 	private final IOptometristaJpaRepositorio jpaOptometristaRepositorio;
