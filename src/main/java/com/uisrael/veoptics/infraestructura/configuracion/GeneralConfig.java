@@ -3,7 +3,9 @@ package com.uisrael.veoptics.infraestructura.configuracion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.uisrael.veoptics.aplicacion.casouso.entradas.IOptometristaCasoUso;
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IPacienteCasoUso;
+<<<<<<< HEAD
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IUsuarioCasoUso;
 import com.uisrael.veoptics.aplicacion.casouso.impl.PacienteCasoUsoImpl;
 import com.uisrael.veoptics.aplicacion.casouso.impl.UsuarioCasoUsoImpl;
@@ -13,6 +15,17 @@ import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.PacienteRep
 import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.UsuarioRepositorioImpl;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IPacienteJpaMapper;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IUsuarioJpaMapper;
+=======
+import com.uisrael.veoptics.aplicacion.casouso.impl.OptometristaCasoUsoImpl;
+import com.uisrael.veoptics.aplicacion.casouso.impl.PacienteCasoUsoImpl;
+import com.uisrael.veoptics.dominio.repositorios.IOptometristaRepositorio;
+import com.uisrael.veoptics.dominio.repositorios.IPacienteRepositorio;
+import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.OptometristaRepositorioImpl;
+import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.PacienteRepositorioImpl;
+import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IOptometristaJpaMapper;
+import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IPacienteJpaMapper;
+import com.uisrael.veoptics.infraestructura.repositorios.IOptometristaJpaRepositorio;
+>>>>>>> c6ae1028e3ba33712fa423562de818de3377627d
 import com.uisrael.veoptics.infraestructura.repositorios.IPacienteJpaRepositorio;
 import com.uisrael.veoptics.infraestructura.repositorios.IUsuarioJpaRepositorio;
 
@@ -30,6 +43,7 @@ public class GeneralConfig {
 	};
 	
 	@Bean
+<<<<<<< HEAD
 	IUsuarioRepositorio usuarioRepositorio(IUsuarioJpaRepositorio jpaRepositorio, IUsuarioJpaMapper mapper) {
 		return new UsuarioRepositorioImpl(jpaRepositorio, mapper);
 	};
@@ -39,5 +53,15 @@ public class GeneralConfig {
 		return new UsuarioCasoUsoImpl(repositorio);
 	};
 	
+=======
+	IOptometristaRepositorio optometristaRepositorio(IOptometristaJpaRepositorio jpaRepositorio, IOptometristaJpaMapper mapper) {
+		return new OptometristaRepositorioImpl(jpaRepositorio, mapper);
+	};
+
+	@Bean
+	IOptometristaCasoUso optometristaCasoUso(IOptometristaRepositorio repositorio) {
+		return new OptometristaCasoUsoImpl(repositorio);
+	};
+>>>>>>> c6ae1028e3ba33712fa423562de818de3377627d
 
 }
