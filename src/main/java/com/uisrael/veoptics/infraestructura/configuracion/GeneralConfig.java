@@ -1,0 +1,26 @@
+package com.uisrael.veoptics.infraestructura.configuracion;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.uisrael.veoptics.aplicacion.casouso.entradas.IPacienteCasoUso;
+import com.uisrael.veoptics.aplicacion.casouso.impl.PacienteCasoUsoImpl;
+import com.uisrael.veoptics.dominio.repositorios.IPacienteRepositorio;
+import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.PacienteRepositorioImpl;
+import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IPacienteJpaMapper;
+import com.uisrael.veoptics.infraestructura.repositorios.IPacienteJpaRepositorio;
+
+@Configuration
+public class GeneralConfig {
+
+	@Bean
+	IPacienteRepositorio pacienteRepositorio(IPacienteJpaRepositorio jpaRepositorio, IPacienteJpaMapper mapper) {
+		return new PacienteRepositorioImpl(jpaRepositorio, mapper);
+	};
+
+	@Bean
+	IPacienteCasoUso pacienteCasoUso(IPacienteRepositorio repositorio) {
+		return new PacienteCasoUsoImpl(repositorio);
+	};
+
+}

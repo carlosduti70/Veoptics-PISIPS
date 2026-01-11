@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.uisrael.veoptics.infraestructura.persistencia.jpa.PacienteJpa;
 
-public interface IPacienteRepositorio extends JpaRepository<PacienteJpa, Integer> {
+public interface IPacienteJpaRepositorio extends JpaRepository<PacienteJpa, Integer> {
 
 }

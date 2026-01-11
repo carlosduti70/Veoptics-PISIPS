@@ -2,7 +2,6 @@ package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 
 import java.io.Serializable;
 
-import com.uisrael.veoptics.dominio.entidades.Rol;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +27,6 @@ public class UsuarioJpa implements Serializable {
 	private String correo;
 	private String clave;
 	private Boolean estado;
-	private Rol rol;
+	private RolJpa rol;
 	
 }
