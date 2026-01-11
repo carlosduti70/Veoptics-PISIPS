@@ -7,5 +7,4 @@ import com.uisrael.veoptics.infraestructura.persistencia.jpa.OptometristaJpa;
 public interface IOptometristaJpaRepositorio extends JpaRepository<OptometristaJpa, Integer>{
 
 
-
 }
