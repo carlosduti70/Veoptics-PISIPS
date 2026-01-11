@@ -13,6 +13,7 @@ public interface IPacienteRepositorio {
 
 	List<Paciente> listarTodos();
 
+	
 	void eliminar(int id);
 
 }
