@@ -7,8 +7,11 @@ import com.uisrael.veoptics.dominio.entidades.Optometrista;
 public interface IOptometristaCasoUso {
 	
 	Optometrista crear(Optometrista optometrista);
-	Optometrista ObtenerPorId(int id);
+	
+	Optometrista obtenerPorId(int id);
+	
 	List<Optometrista>listar ();
+	
 	void eliminar(int id);
 
 }
