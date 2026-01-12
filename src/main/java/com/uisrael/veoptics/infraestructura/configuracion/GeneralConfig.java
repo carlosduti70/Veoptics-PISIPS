@@ -36,7 +36,7 @@ public class GeneralConfig {
 		return new PacienteCasoUsoImpl(repositorio);
 	};
 	
-
+	@Bean
 	IOptometristaRepositorio optometristaRepositorio(IOptometristaJpaRepositorio jpaRepositorio, IOptometristaJpaMapper mapper) {
 		return new OptometristaRepositorioImpl(jpaRepositorio, mapper);
 	};
