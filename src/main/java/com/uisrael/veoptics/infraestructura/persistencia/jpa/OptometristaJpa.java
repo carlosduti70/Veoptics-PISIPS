@@ -3,6 +3,7 @@ package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +31,7 @@ public class OptometristaJpa implements Serializable  {
 	
 	// Relación: Muchos registros de Optometrista pertenecen a un Usuario
     // En la imagen, sv_optometrista tiene la FK "id_usuario"
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "id_usuario")
     private UsuarioJpa usuario;
 

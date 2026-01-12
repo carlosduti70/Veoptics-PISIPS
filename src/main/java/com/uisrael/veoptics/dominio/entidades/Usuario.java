@@ -1,5 +1,7 @@
 package com.uisrael.veoptics.dominio.entidades;
 
+import java.util.List;
+
 public final class Usuario {
 	
 	private final int idUsuario;
@@ -10,9 +12,10 @@ public final class Usuario {
 	private final String clave;
 	private final Boolean estado;
 	private final Rol rol;
+	private final List<Optometrista> optometristas;
 	
 	public Usuario(int idUsuario, String nombre, String apellido, String cedula, String correo, String clave,
-			Boolean estado, Rol rol) {
+			Boolean estado, Rol rol, List<Optometrista> optometristas) {
 		
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
@@ -22,6 +25,7 @@ public final class Usuario {
 		this.clave = clave;
 		this.estado = estado;
 		this.rol = rol;
+		this.optometristas=optometristas;
 	}
 
 	public int getIdUsuario() {
@@ -54,6 +58,10 @@ public final class Usuario {
 
 	public Rol getRol() {
 		return rol;
+	}
+
+	public List<Optometrista> getOptometristas() {
+		return optometristas;
 	}
 
 	@Override

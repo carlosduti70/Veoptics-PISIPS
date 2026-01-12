@@ -1,6 +1,4 @@
-package com.uisrael.veoptics.dominio.entidades;
-
-import java.time.LocalDate; 
+package com.uisrael.veoptics.dominio.entidades; 
 
 public final class Optometrista {
 	private final int idOptometrista;
@@ -10,19 +8,21 @@ public final class Optometrista {
 	private final String registroProfesional;
 	private final String telefono;
 	private final char estado;
+	private final Usuario usuario;
 
 	
 	
 	
 	public Optometrista(int idOptometrista, String nombre, String apellido, String ci, String registroProfesional,
-			String telefono, char estado) {
+			String telefono, char estado, Usuario usuario) {
 		this.idOptometrista = idOptometrista;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.ci = ci;
-		this.registroProfesional = nombre;
+		this.registroProfesional = registroProfesional;
 		this.telefono = telefono;
 		this.estado = estado;
+		this.usuario=usuario;
 	}
 
 
@@ -58,6 +58,11 @@ public final class Optometrista {
 
 	public char getEstado() {
 		return estado;
+	}
+
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
 }
