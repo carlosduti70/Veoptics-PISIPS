@@ -1,6 +1,5 @@
 package com.uisrael.veoptics.presentacion.dto.response;
 
-import com.uisrael.veoptics.dominio.entidades.Rol;
 
 public class UsuarioResponseDTO {
 	
@@ -12,7 +11,7 @@ public class UsuarioResponseDTO {
 	private  String correo;
 	private  String clave;
 	private  Boolean estado;
-	private  Rol rol;
+	private  int  id_rol;
 	
 	
 	public int getIdUsuario() {
@@ -57,13 +56,12 @@ public class UsuarioResponseDTO {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-	public Rol getRol() {
-		return rol;
+	public int getId_rol() {
+		return id_rol;
 	}
-	public void setRol(Rol rol) {
-		this.rol = rol;
+	public void setId_rol(int id_rol) {
+		this.id_rol = id_rol;
 	}
-
 	
 	
 	

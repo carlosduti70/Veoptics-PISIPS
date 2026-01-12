@@ -9,10 +9,10 @@ public final class Usuario {
 	private final String correo;
 	private final String clave;
 	private final Boolean estado;
-	private final Rol rol;
+	private final int id_rol;
 	
 	public Usuario(int idUsuario, String nombre, String apellido, String cedula, String correo, String clave,
-			Boolean estado, Rol rol) {
+			Boolean estado, int id_rol) {
 		
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
@@ -21,7 +21,7 @@ public final class Usuario {
 		this.correo = correo;
 		this.clave = clave;
 		this.estado = estado;
-		this.rol = rol;
+		this.id_rol = id_rol;
 	}
 
 	public int getIdUsuario() {
@@ -52,15 +52,17 @@ public final class Usuario {
 		return estado;
 	}
 
-	public Rol getRol() {
-		return rol;
+	public int getId_rol() {
+		return id_rol;
 	}
 
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula="
-				+ cedula + ", correo=" + correo + ", clave=" + clave + ", estado=" + estado + ", rol=" + rol + "]";
+				+ cedula + ", correo=" + correo + ", clave=" + clave + ", estado=" + estado + ", rol=" + id_rol + "]";
 	}
+
+	
 
 	
 

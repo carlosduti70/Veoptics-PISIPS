@@ -1,7 +1,4 @@
 package com.uisrael.veoptics.presentacion.dto.request;
-
-import com.uisrael.veoptics.dominio.entidades.Rol;
-
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -24,7 +21,7 @@ public class UsuarioRequestDTO {
 	@NotBlank
 	private  Boolean estado;
 	@NotBlank
-	private  Rol rol;
+	private  Integer id_rol;
 	
 	
 
