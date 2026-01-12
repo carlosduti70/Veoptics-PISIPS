@@ -12,6 +12,8 @@ public final class Optometrista {
 	private final char estado;
 
 	
+	
+	
 	public Optometrista(int idOptometrista, String nombre, String apellido, String ci, String registroProfesional,
 			String telefono, char estado) {
 		this.idOptometrista = idOptometrista;
