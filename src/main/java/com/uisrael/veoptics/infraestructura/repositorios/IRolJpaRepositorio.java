@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.uisrael.veoptics.infraestructura.persistencia.jpa.RolJpa;
 
-public interface IRolRepositorio extends JpaRepository<RolJpa,Integer> {
+public interface IRolJpaRepositorio extends JpaRepository<RolJpa,Integer> {
 	
 
 }

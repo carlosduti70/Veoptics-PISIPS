@@ -5,21 +5,27 @@ import org.springframework.context.annotation.Configuration;
 
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IOptometristaCasoUso;
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IPacienteCasoUso;
+import com.uisrael.veoptics.aplicacion.casouso.entradas.IRolCasoUso;
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IUsuarioCasoUso;
 import com.uisrael.veoptics.aplicacion.casouso.impl.OptometristaCasoUsoImpl;
 import com.uisrael.veoptics.aplicacion.casouso.impl.PacienteCasoUsoImpl;
+import com.uisrael.veoptics.aplicacion.casouso.impl.RolCasoUsoImpl;
 import com.uisrael.veoptics.aplicacion.casouso.impl.UsuarioCasoUsoImpl;
 import com.uisrael.veoptics.dominio.repositorios.IOptometristaRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IPacienteRepositorio;
+import com.uisrael.veoptics.dominio.repositorios.IRolRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IUsuarioRepositorio;
 import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.OptometristaRepositorioImpl;
 import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.PacienteRepositorioImpl;
+import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.RolRepositorioImpl;
 import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.UsuarioRepositorioImpl;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IOptometristaJpaMapper;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IPacienteJpaMapper;
+import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IRolJpaMapper;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IUsuarioJpaMapper;
 import com.uisrael.veoptics.infraestructura.repositorios.IOptometristaJpaRepositorio;
 import com.uisrael.veoptics.infraestructura.repositorios.IPacienteJpaRepositorio;
+import com.uisrael.veoptics.infraestructura.repositorios.IRolJpaRepositorio;
 import com.uisrael.veoptics.infraestructura.repositorios.IUsuarioJpaRepositorio;
 
 
@@ -57,7 +63,15 @@ public class GeneralConfig {
 		return new UsuarioCasoUsoImpl(repositorio);
 	};
 	
-
-
+	@Bean
+	IRolRepositorio rolRepositorio(IRolJpaRepositorio jpaRepositorio, IRolJpaMapper mapper) {
+		return new RolRepositorioImpl(jpaRepositorio, mapper);
+		
+	};
+	
+	@Bean
+	IRolCasoUso rolCasoUso(IRolRepositorio repositorio) {
+		return new RolCasoUsoImpl(repositorio);
+	};
 
 }
