@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -31,6 +33,12 @@ public class PacienteJpa implements Serializable {
 	private LocalDate fecPrimero;
 	private String nombre;
 	private char estado;
+	
+	// Relación: Muchos Pacientes (registros) pertenecen a un Usuario
+    // En la imagen, sv_paciente tiene la FK "id_usuario"
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private UsuarioJpa usuario;
 	
 
 }

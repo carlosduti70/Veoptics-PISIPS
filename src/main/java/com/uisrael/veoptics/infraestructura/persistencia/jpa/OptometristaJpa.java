@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -25,6 +27,12 @@ public class OptometristaJpa implements Serializable  {
 	private String registroProfesional;
 	private String telefono;
 	private char estado;
+	
+	// Relación: Muchos registros de Optometrista pertenecen a un Usuario
+    // En la imagen, sv_optometrista tiene la FK "id_usuario"
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private UsuarioJpa usuario;
 
 
 }
