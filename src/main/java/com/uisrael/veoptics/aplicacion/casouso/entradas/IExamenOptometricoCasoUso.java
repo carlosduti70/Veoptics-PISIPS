@@ -10,3 +10,4 @@ public interface IExamenOptometricoCasoUso {
 	
 	void eliminar(int id);
 }
+
