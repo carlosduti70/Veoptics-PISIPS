@@ -15,12 +15,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table (name = "sv_usuarios")
+@Table (name = "sv_usuario")
 
 public class UsuarioJpa implements Serializable {
 
-	
-	private static final long serialVersionUID = -4889039407626541762L;
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int idUsuario;
@@ -37,7 +36,7 @@ public class UsuarioJpa implements Serializable {
     @JoinColumn(name = "id_rol")
     private RolJpa rol;
     
- //Relación: Un Usuario puede estar vinculado a un registro de Optometrista
+ // Relación: Un Usuario puede estar vinculado a un registro de Optometrista
     @OneToMany(mappedBy = "usuario")
     private List<OptometristaJpa> optometristas;
     

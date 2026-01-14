@@ -13,12 +13,10 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso{
 	private final IUsuarioRepositorio repositorio;
 	
 	
-
 	public UsuarioCasoUsoImpl(IUsuarioRepositorio repositorio) {
 		
 		this.repositorio = repositorio;
 	}
-
 
 
 	@Override
@@ -28,7 +26,6 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso{
 	}
 
 
-
 	@Override
 	public Usuario obtenerPorId(int id) {
 		
@@ -36,13 +33,11 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso{
 	}
 
 
-
 	@Override
 	public List<Usuario> listar() {
 		
 		return repositorio.listarTodos();
 	}
-
 
 
 	@Override
