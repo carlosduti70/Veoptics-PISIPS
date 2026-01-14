@@ -20,9 +20,8 @@ public class UsuarioRequestDTO {
 	private  String clave;
 	@NotBlank
 	private  Boolean estado;
-	@NotBlank
-	private  Integer id_rol;
 	
+
 	
 
 }

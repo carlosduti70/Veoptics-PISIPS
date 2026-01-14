@@ -3,8 +3,6 @@ package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 import java.io.Serializable;
 import java.util.List;
 
-import com.uisrael.veoptics.dominio.entidades.HistoriaClinica;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
