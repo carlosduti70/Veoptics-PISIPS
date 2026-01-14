@@ -1,5 +1,7 @@
 package com.uisrael.veoptics.aplicacion.casouso.entradas;
 
+import com.uisrael.veoptics.dominio.entidades.ExamenOptometrico;
+
 public interface IExamenOptometricoCasoUso {
 	
 	ExamenOptometrico crear(ExamenOptometrico examenoptometrico);
