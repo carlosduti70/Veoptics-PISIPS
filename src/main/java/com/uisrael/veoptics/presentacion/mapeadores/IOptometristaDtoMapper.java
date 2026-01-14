@@ -11,5 +11,4 @@ public interface IOptometristaDtoMapper {
 	Optometrista toDomain(OptometristaRequestDTO optometrista);
 	OptometristaResponseDTO toResponseDto(Optometrista optometrista);
 	
-
 }
