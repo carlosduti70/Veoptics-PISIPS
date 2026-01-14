@@ -15,12 +15,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table (name = "usuario")
+@Table (name = "sv_usuario")
 
 public class UsuarioJpa implements Serializable {
 
-	
-	private static final long serialVersionUID = -4889039407626541762L;
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int idUsuario;

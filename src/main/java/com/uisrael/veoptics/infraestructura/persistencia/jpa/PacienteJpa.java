@@ -40,5 +40,9 @@ public class PacienteJpa implements Serializable {
     @JoinColumn(name = "id_usuario")
     private UsuarioJpa usuario;
 	
+    
+   
+   
+
 
 }
