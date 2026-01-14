@@ -7,7 +7,9 @@ public class OptometristaResponseDTO {
 	private String ci;
 	private String registroProfesional;
 	private String telefono;
-	private char estado;
+	private Boolean estado;
+	
+	
 	public int getIdOptometrista() {
 		return idOptometrista;
 	}
@@ -44,10 +46,10 @@ public class OptometristaResponseDTO {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public char getEstado() {
+	public Boolean getEstado() {
 		return estado;
 	}
-	public void setEstado(char estado) {
+	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
 	
