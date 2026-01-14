@@ -1,5 +1,7 @@
 package com.uisrael.veoptics.aplicacion.casouso.entradas;
 
+import java.util.List;
+
 import com.uisrael.veoptics.dominio.entidades.ExamenOptometrico;
 
 public interface IExamenOptometricoCasoUso {
