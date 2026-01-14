@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table (name = "usuario")
+@Table (name = "sv_usuarios")
 
 public class UsuarioJpa implements Serializable {
 
@@ -37,7 +37,7 @@ public class UsuarioJpa implements Serializable {
     @JoinColumn(name = "id_rol")
     private RolJpa rol;
     
- // Relación: Un Usuario puede estar vinculado a un registro de Optometrista
+ //Relación: Un Usuario puede estar vinculado a un registro de Optometrista
     @OneToMany(mappedBy = "usuario")
     private List<OptometristaJpa> optometristas;
     

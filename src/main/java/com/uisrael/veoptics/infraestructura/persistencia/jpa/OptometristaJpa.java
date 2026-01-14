@@ -1,6 +1,9 @@
 package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 
 import java.io.Serializable;
+import java.util.List;
+
+import com.uisrael.veoptics.dominio.entidades.HistoriaClinica;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -30,9 +34,11 @@ public class OptometristaJpa implements Serializable  {
 	
 	// Relación: Muchos registros de Optometrista pertenecen a un Usuario
     // En la imagen, sv_optometrista tiene la FK "id_usuario"
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "id_usuario")
     private UsuarioJpa usuario;
 
-
+	//// Relación inversa: Un optometrista registra muchas historias
+   // @OneToMany(mappedBy = "optometrista")
+   // private List<HistoriaClinica> historiaC;
 }
