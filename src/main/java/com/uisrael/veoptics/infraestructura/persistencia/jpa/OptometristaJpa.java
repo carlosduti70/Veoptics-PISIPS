@@ -27,7 +27,7 @@ public class OptometristaJpa implements Serializable  {
 	private String  ci;
 	private String registroProfesional;
 	private String telefono;
-	private char estado;
+	private String estado;
 	
 	// Relación: Muchos registros de Optometrista pertenecen a un Usuario
     // En la imagen, sv_optometrista tiene la FK "id_usuario"
