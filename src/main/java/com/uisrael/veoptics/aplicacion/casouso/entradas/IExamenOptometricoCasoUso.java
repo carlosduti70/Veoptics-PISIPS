@@ -6,6 +6,7 @@ import com.uisrael.veoptics.dominio.entidades.ExamenOptometrico;
 
 public interface IExamenOptometricoCasoUso {
 	
+	
 	ExamenOptometrico crear(ExamenOptometrico examenoptometrico);
 	
 	ExamenOptometrico obtenerPorId(int id);
