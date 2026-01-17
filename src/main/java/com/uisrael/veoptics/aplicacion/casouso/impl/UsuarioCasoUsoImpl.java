@@ -1,7 +1,6 @@
 package com.uisrael.veoptics.aplicacion.casouso.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IUsuarioCasoUso;
 import com.uisrael.veoptics.dominio.entidades.Usuario;
