@@ -5,8 +5,6 @@ import java.time.LocalDate;
 public class ExamenOptometricoResponseDTO {
 	
 	private  int idexamen;
-	private  int idpaciente;
-	private  int idcertificado;
 	private  LocalDate fecha;
 	private  String esfera_od;
 	private  String cilindro_od;
@@ -15,7 +13,6 @@ public class ExamenOptometricoResponseDTO {
 	private  String cilindro_oi;
 	private  String eje_oi;
 	private  String adicion_od;
-	private  int idoptometrista;
 	private  String adicion_oi;
 	private  String agudeza_visual_cerca_oi;
 	private  String agudeza_visual_lejos_oi;
@@ -28,18 +25,6 @@ public class ExamenOptometricoResponseDTO {
 	}
 	public void setIdexamen(int idexamen) {
 		this.idexamen = idexamen;
-	}
-	public int getIdpaciente() {
-		return idpaciente;
-	}
-	public void setIdpaciente(int idpaciente) {
-		this.idpaciente = idpaciente;
-	}
-	public int getIdcertificado() {
-		return idcertificado;
-	}
-	public void setIdcertificado(int idcertificado) {
-		this.idcertificado = idcertificado;
 	}
 	public LocalDate getFecha() {
 		return fecha;
@@ -88,12 +73,6 @@ public class ExamenOptometricoResponseDTO {
 	}
 	public void setAdicion_od(String adicion_od) {
 		this.adicion_od = adicion_od;
-	}
-	public int getIdoptometrista() {
-		return idoptometrista;
-	}
-	public void setIdoptometrista(int idoptometrista) {
-		this.idoptometrista = idoptometrista;
 	}
 	public String getAdicion_oi() {
 		return adicion_oi;
