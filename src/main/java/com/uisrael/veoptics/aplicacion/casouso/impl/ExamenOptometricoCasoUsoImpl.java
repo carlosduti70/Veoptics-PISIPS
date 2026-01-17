@@ -3,9 +3,10 @@ package com.uisrael.veoptics.aplicacion.casouso.impl;
 import java.util.List;
 
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IExamenOptometricoCasoUso;
+import com.uisrael.veoptics.dominio.entidades.ExamenOptometrico;
+import com.uisrael.veoptics.dominio.repositorios.IExamenOptometricoRepositorio;
 
 public class ExamenOptometricoCasoUsoImpl implements IExamenOptometricoCasoUso {
-	
 	private final IExamenOptometricoRepositorio repositorio;
 
 	public ExamenOptometricoCasoUsoImpl(IExamenOptometricoRepositorio repositorio) {
@@ -17,7 +18,7 @@ public class ExamenOptometricoCasoUsoImpl implements IExamenOptometricoCasoUso {
 	}
 	@Override
 	public ExamenOptometrico obtenerPorId(int id) {
-		return repositorio.buscarPorId(id).orElseThrow(() -> new RuntimeException("Dato no encontrado"));
+		return repositorio.buscarPorId(id).orElseThrow(() -> new RuntimeException("ExamenOptometrico no encontrado"));
 	}
 	@Override
 	public List<ExamenOptometrico> listar() {
