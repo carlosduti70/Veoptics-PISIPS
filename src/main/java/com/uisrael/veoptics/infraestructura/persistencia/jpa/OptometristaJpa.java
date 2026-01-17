@@ -36,7 +36,7 @@ public class OptometristaJpa implements Serializable  {
     @JoinColumn(name = "id_usuario")
     private UsuarioJpa usuario;
 
-	//// Relación inversa: Un optometrista registra muchas historias
-   // @OneToMany(mappedBy = "optometrista")
-   // private List<HistoriaClinica> historiaC;
+
+    @OneToMany(mappedBy = "optometrista")
+    private List<ExamenOptometricoJpa> examenoptometrico;
 }
