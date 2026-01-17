@@ -43,7 +43,7 @@ public class PacienteJpa implements Serializable {
 	
     @OneToMany
     @JoinColumn(name = "id_examen")
-    private ExamenOptometricoJpa eXamenoptometrico;
+    private ExamenOptometricoJpa examenoptometrico;
    
    
 
