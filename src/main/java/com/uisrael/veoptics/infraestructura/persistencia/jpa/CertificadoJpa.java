@@ -28,6 +28,6 @@ public class CertificadoJpa implements Serializable{
 	private String tbl_ruta_pdf;
 	
 	@OneToMany(mappedBy = "id_examen")
-	private List<ExamenOptometrico> examenoptometrico;
+	private List<ExamenOptometricoJpa> examenoptometrico;
 
 }
