@@ -5,7 +5,6 @@ import java.util.List;
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IOptometristaCasoUso;
 import com.uisrael.veoptics.dominio.entidades.Optometrista;
 import com.uisrael.veoptics.dominio.repositorios.IOptometristaRepositorio;
-import com.uisrael.veoptics.infraestructura.repositorios.IOptometristaJpaRepositorio;
 
 public class OptometristaCasoUsoImpl implements IOptometristaCasoUso {
 	
