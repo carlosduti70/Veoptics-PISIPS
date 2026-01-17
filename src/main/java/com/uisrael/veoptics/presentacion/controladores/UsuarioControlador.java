@@ -17,32 +17,36 @@ import com.uisrael.veoptics.presentacion.mapeadores.IUsuarioDtoMapper;
 
 import jakarta.validation.Valid;
 
+
+
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioControlador {
 	
+
 	
 	// dependencias de la arquitectura
-		private final IUsuarioCasoUso usuarioCasoUso;// casos de uso
-		private final IUsuarioDtoMapper mapper;// mapeadores
+			private final IUsuarioCasoUso usuarioCasoUso;// casos de uso
+			private final IUsuarioDtoMapper mapper;// mapeadores
+			
+			public UsuarioControlador(IUsuarioCasoUso usuarioCasoUso, IUsuarioDtoMapper mapper) {
+				super();
+				this.usuarioCasoUso = usuarioCasoUso;
+				this.mapper = mapper;
+			}
+			
+			@GetMapping("/listar")
+			public List<UsuarioResponseDTO> listar() {
+				return usuarioCasoUso.listar().stream().map(mapper::toResponseDto).toList();
+				}
 
-		public UsuarioControlador(IUsuarioCasoUso usuarioCasoUso, IUsuarioDtoMapper mapper) {
-			super();
-			this.usuarioCasoUso = usuarioCasoUso;
-			this.mapper = mapper;
-		}
-
-		@GetMapping("/listar")
-		public List<UsuarioResponseDTO> listar() {
-			return usuarioCasoUso.listar().stream().map(mapper::toResponseDto).toList();
-		}
-
-		// post
-		@PostMapping("/crear")
-		@ResponseStatus(HttpStatus.CREATED)
-		public UsuarioResponseDTO crear(@Valid @RequestBody UsuarioRequestDTO request) {
-			return mapper.toResponseDto(usuarioCasoUso.crear(mapper.toDomain(request)));
-		}
-
+				// post
+			@PostMapping("/crear")
+			@ResponseStatus(HttpStatus.CREATED)
+			
+			public UsuarioResponseDTO crear(@Valid @RequestBody UsuarioRequestDTO request) {
+				return mapper.toResponseDto(usuarioCasoUso.crear(mapper.toDomain(request)));
+				}
+			
 
 }

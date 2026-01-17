@@ -22,6 +22,4 @@ public class UsuarioRequestDTO {
 	private  Boolean estado;
 	
 
-	
-
 }

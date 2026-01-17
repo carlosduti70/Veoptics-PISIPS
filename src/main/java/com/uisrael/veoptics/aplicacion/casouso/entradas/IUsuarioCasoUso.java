@@ -14,3 +14,5 @@ public interface IUsuarioCasoUso {
 	void eliminar(int id);
 
 }
+
+

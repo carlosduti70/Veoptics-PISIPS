@@ -19,7 +19,7 @@ public class CertificadoRepositorioImpl implements ICertificadoRepositorio{
 	
 	
 	public CertificadoRepositorioImpl(ICertificadoJpaRepositorio jpaRepositorio, ICertificadoJpaMapper entityMapper) {
-		super();
+	
 		this.jpaRepositorio = jpaRepositorio;
 		this.entityMapper = entityMapper;
 	}

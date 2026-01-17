@@ -11,7 +11,6 @@ public class UsuarioResponseDTO {
 	private  String correo;
 	private  String clave;
 	private  Boolean estado;
-	private  int  id_rol;
 	
 	
 	public int getIdUsuario() {
@@ -56,12 +55,7 @@ public class UsuarioResponseDTO {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-	public int getId_rol() {
-		return id_rol;
-	}
-	public void setId_rol(int id_rol) {
-		this.id_rol = id_rol;
-	}
+
 	
 	
 	
