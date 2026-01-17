@@ -90,6 +90,7 @@ public class ExamenOptometrico {
 		public String getAltura_od() {
 			return altura_od;
 		}
+	
 		
 		
 }
