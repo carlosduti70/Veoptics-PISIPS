@@ -29,7 +29,6 @@ public class ExamenOptometricoJpa implements Serializable{
 	private String cilindro_oi;
 	private String eje_oi;
 	private String adicion_od;
-	private int idoptometrista;
 	private String adicion_oi;
 	private String agudeza_visual_cerca_oi;
 	private String agudeza_visual_lejos_oi;
@@ -46,5 +45,9 @@ public class ExamenOptometricoJpa implements Serializable{
     @ManyToOne
     @JoinColumn(name = "id_paciente")
     private PacienteJpa paciente;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_optometrista")
+    private OptometristaJpa optometrista;
 
 }
