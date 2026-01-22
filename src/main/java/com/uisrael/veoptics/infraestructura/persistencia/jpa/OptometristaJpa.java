@@ -45,4 +45,9 @@ public class OptometristaJpa implements Serializable  {
 	
 	@OneToMany (mappedBy ="fkIdOptometrista")
 	private List<CertificadoJpa> certificados;
+	
+	// Relación: Un optometrista pertenecen a varios examenes optometrisoc
+	
+	@OneToMany (mappedBy ="fkIdExamen")
+	private List<ExamenOptometricoJpa> examenes;
 }

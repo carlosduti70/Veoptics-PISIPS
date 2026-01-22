@@ -48,5 +48,10 @@ public class ExamenOptometricoJpa implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "fkIdCertificado")
 	private CertificadoJpa fkIdCertificado;
+	
+	// Relación: Muchos examen optometrico (registros) se puede generar a un optometrista
+	@ManyToOne
+	@JoinColumn(name = "fkIdExamen")
+	private OptometristaJpa fkIdExamen;
 
 }
