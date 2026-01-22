@@ -39,4 +39,7 @@ public class OptometristaJpa implements Serializable  {
 
     @OneToMany(mappedBy = "optometrista")
     private List<ExamenOptometricoJpa> examenoptometrico;
+    
+    @OneToMany(mappedBy = "optometrista")
+    private List<CertificadoJpa> certificado;
 }

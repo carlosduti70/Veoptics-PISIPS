@@ -2,6 +2,7 @@ package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class PacienteJpa implements Serializable {
 	
     @OneToMany
     @JoinColumn(name = "id_examen")
-    private ExamenOptometricoJpa examenoptometrico;
+    private List<ExamenOptometricoJpa> examenoptometrico;
    
    
 

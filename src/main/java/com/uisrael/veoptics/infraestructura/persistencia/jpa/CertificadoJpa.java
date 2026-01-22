@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -27,7 +31,15 @@ public class CertificadoJpa implements Serializable{
 	private String tbl_informacion_certificado;
 	private String tbl_ruta_pdf;
 	
-	@OneToMany(mappedBy = "id_examen")
+	
+	@OneToMany(mappedBy = "idexamen", cascade = CascadeType.ALL)
 	private List<ExamenOptometricoJpa> examenoptometrico;
+	
+	@OneToMany(mappedBy = "idPaciente", cascade = CascadeType.ALL)
+	private List<PacienteJpa> paciente;
+	
+    @ManyToOne
+    @JoinColumn(name = "idOptometrista", nullable = false)
+    private OptometristaJpa optometrista;
 
 }
