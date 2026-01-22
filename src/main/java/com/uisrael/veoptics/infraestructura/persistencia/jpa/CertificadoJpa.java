@@ -37,12 +37,15 @@ public class CertificadoJpa implements Serializable{
 	@JoinColumn(name = "fkIdPaciente")
 	private PacienteJpa fkIdPaciente;
 	
-
 	
  // Relación: Un certificado  (registros) pertenecen a muchos Examenes optometricos
-    
     @OneToMany(mappedBy = "fkIdCertificado")
     private List<ExamenOptometricoJpa> examenoptometricos;
 
+    
+	// Relación: Muchos Certificados (registros) a un optometrista
+	@ManyToOne
+	@JoinColumn(name = "fkIdOptometrista")
+	private OptometristaJpa fkIdOptometrista;
 
 }
