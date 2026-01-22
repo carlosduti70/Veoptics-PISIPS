@@ -35,8 +35,8 @@ public class UsuarioJpa implements Serializable {
     @JoinColumn(name = "fkRol")
     private RolJpa fkRol;
     
- // Relación: Un Usuario puede estar vinculado a un registro de Optometrista
-    @OneToMany(mappedBy = "usuario")
+ // Relación: Un Usuario puede estar vinculado a varios registro de Optometrista
+    @OneToMany(mappedBy = "fkUsuario")
     private List<OptometristaJpa> optometristas;
     
  // Relación: Un Usuario puede estar vinculado a un registro de Paciente
