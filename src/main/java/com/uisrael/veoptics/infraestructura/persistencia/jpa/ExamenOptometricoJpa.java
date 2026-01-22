@@ -38,16 +38,5 @@ public class ExamenOptometricoJpa implements Serializable{
 	private String altura_od;
 	
 
-    @ManyToOne
-    @JoinColumn(name = "id_certificado")
-    private CertificadoJpa certificado;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_paciente")
-    private PacienteJpa paciente;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_optometrista")
-    private OptometristaJpa optometrista;
 
 }

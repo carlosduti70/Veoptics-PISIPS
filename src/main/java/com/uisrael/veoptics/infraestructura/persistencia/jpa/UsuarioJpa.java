@@ -30,18 +30,5 @@ public class UsuarioJpa implements Serializable {
 	private String clave;
 	private Boolean estado;
 	
-	// Relación: Muchos Usuarios pertenecen a un Rol
-    // En la imagen, sv_usuarios tiene la FK "id_rol"
-    @ManyToOne
-    @JoinColumn(name = "id_rol")
-    private RolJpa rol;
-    
- // Relación: Un Usuario puede estar vinculado a un registro de Optometrista
-    @OneToMany(mappedBy = "usuario")
-    private List<OptometristaJpa> optometristas;
-    
- // Relación: Un Usuario puede estar vinculado a un registro de Paciente
-    @OneToMany(mappedBy = "usuario")
-    private List<PacienteJpa> pacientes;
-	
+
 }

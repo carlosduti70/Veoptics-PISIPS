@@ -31,15 +31,5 @@ public class CertificadoJpa implements Serializable{
 	private String tbl_informacion_certificado;
 	private String tbl_ruta_pdf;
 	
-	
-	@OneToMany(mappedBy = "idexamen", cascade = CascadeType.ALL)
-	private List<ExamenOptometricoJpa> examenoptometrico;
-	
-	@OneToMany(mappedBy = "idPaciente", cascade = CascadeType.ALL)
-	private List<PacienteJpa> paciente;
-	
-    @ManyToOne
-    @JoinColumn(name = "idOptometrista", nullable = false)
-    private OptometristaJpa optometrista;
 
 }

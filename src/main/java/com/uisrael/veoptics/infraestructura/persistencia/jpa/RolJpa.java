@@ -24,9 +24,6 @@ public class RolJpa implements Serializable{
 		private int id_rol;
 		@Column(length = 200)
 		private String nombre_rol;
-		
-		// Relación: Un Rol puede tener muchos Usuarios
-	    @OneToMany(mappedBy = "rol")
-	    private List<UsuarioJpa> usuarios;
+
 		
 }
