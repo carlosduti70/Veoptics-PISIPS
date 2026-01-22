@@ -35,7 +35,10 @@ public class OptometristaJpa implements Serializable  {
     @JoinColumn(name = "fkUsuario")
     private UsuarioJpa fkUsuario;
 
-
+	// Relación: Un optometrista pertenecen a varios historia
+	
+	@OneToMany (mappedBy ="fkIdOptometrista")
+	private List<HistoriaJpa> historias;
     
 
 }

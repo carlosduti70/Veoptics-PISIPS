@@ -33,6 +33,11 @@ public class HistoriaJpa implements Serializable {
     @ManyToOne
     @JoinColumn(name = "fkIdPaciente")
     private PacienteJpa fkIdPaciente;
+    
+	// Relación: Muchos historia (registros) pertenecen a un registro de optometrista
+    @ManyToOne
+    @JoinColumn(name = "fkIdOptometrista")
+    private OptometristaJpa fkIdOptometrista;
 	
 
 }
