@@ -51,7 +51,9 @@ public class PacienteJpa implements Serializable {
     @OneToMany(mappedBy = "fkIdPaciente")
     private List<ExamenOptometricoJpa> examenes;
    
-   
+// Relación: Un Pacientes (registros) tiene muchos historia clinicas
+    @OneToMany(mappedBy = "fkIdPaciente")
+    private List<HistoriaJpa> historias;
 
 
 }
