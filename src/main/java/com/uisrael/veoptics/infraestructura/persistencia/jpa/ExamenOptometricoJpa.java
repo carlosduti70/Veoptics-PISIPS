@@ -19,7 +19,7 @@ public class ExamenOptometricoJpa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
+ 
 	private int idexamen;
 	private LocalDate fecha;
 	private String esfera_od;

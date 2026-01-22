@@ -18,7 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "sv_paciente")
 public class PacienteJpa implements Serializable {
-	
+	 
 
 	private static final long serialVersionUID = 1L;
 	@Id
