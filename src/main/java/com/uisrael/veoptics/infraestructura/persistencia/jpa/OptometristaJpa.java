@@ -31,15 +31,23 @@ public class OptometristaJpa implements Serializable  {
 	private char estado;
 	
 	// Relación: Muchos registros de Optometrista pertenecen a un Usuario
-    // En la imagen, sv_optometrista tiene la FK "id_usuario"
 	@ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private UsuarioJpa usuario;
+    @JoinColumn(name = "fkUsuario")
+    private UsuarioJpa fkUsuario;
 
-
-    @OneToMany(mappedBy = "optometrista")
-    private List<ExamenOptometricoJpa> examenoptometrico;
+	// Relación: Un optometrista pertenecen a varios historia
+	
+	@OneToMany (mappedBy ="fkIdOptometrista")
+	private List<HistoriaJpa> historias;
     
-    @OneToMany(mappedBy = "optometrista")
-    private List<CertificadoJpa> certificado;
+
+	// Relación: Un optometrista pertenecen a varios certificados
+	
+	@OneToMany (mappedBy ="fkIdOptometrista")
+	private List<CertificadoJpa> certificados;
+	
+	// Relación: Un optometrista pertenecen a varios examenes optometrisoc
+	
+	@OneToMany (mappedBy ="fkIdExamen")
+	private List<ExamenOptometricoJpa> examenes;
 }
