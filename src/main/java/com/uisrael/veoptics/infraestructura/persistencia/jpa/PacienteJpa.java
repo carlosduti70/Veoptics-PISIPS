@@ -42,9 +42,10 @@ public class PacienteJpa implements Serializable {
     @JoinColumn(name = "id_usuario")
     private UsuarioJpa usuario;
 	
-    @OneToMany
-    @JoinColumn(name = "id_examen")
-    private List<ExamenOptometricoJpa> examenoptometrico;
+    
+ // Relación: Un Pacientes (registros) pertenecen a muchos Certificado
+    @OneToMany(mappedBy = "fkIdPaciente")
+    private List<CertificadoJpa> certificados;
    
    
 
