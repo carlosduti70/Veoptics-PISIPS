@@ -39,8 +39,6 @@ public class UsuarioJpa implements Serializable {
     @OneToMany(mappedBy = "fkUsuario")
     private List<OptometristaJpa> optometristas;
     
- // Relación: Un Usuario puede estar vinculado a un registro de Paciente
-    @OneToMany(mappedBy = "usuario")
-    private List<PacienteJpa> pacientes;
+ 
 	
 }
