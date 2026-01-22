@@ -2,6 +2,7 @@ package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -37,17 +39,19 @@ public class ExamenOptometricoJpa implements Serializable{
 	private String altura_oi;
 	private String altura_od;
 	
-
+	 // Relación: Muchos Examenes optometricos (registros) pertenecen a un paciente
     @ManyToOne
-    @JoinColumn(name = "id_certificado")
-    private CertificadoJpa certificado;
+    @JoinColumn(name = "fkIdPaciente")
+    private PacienteJpa fkIdPaciente;
     
-    @ManyToOne
-    @JoinColumn(name = "id_paciente")
-    private PacienteJpa paciente;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_optometrista")
-    private OptometristaJpa optometrista;
+	// Relación: Muchos examen optometrico (registros) se puede generar a un Certificados
+	@ManyToOne
+	@JoinColumn(name = "fkIdCertificado")
+	private CertificadoJpa fkIdCertificado;
+	
+	// Relación: Muchos examen optometrico (registros) se puede generar a un optometrista
+	@ManyToOne
+	@JoinColumn(name = "fkIdExamen")
+	private OptometristaJpa fkIdExamen;
 
 }

@@ -36,17 +36,20 @@ public class PacienteJpa implements Serializable {
 	private String nombre;
 	private char estado;
 	
-	// Relación: Muchos Pacientes (registros) pertenecen a un Usuario
-    // En la imagen, sv_paciente tiene la FK "id_usuario"
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private UsuarioJpa usuario;
+
 	
-    @OneToMany
-    @JoinColumn(name = "id_examen")
-    private List<ExamenOptometricoJpa> examenoptometrico;
+    
+ // Relación: Un Pacientes (registros) pertenecen a muchos Certificado
+    @OneToMany(mappedBy = "fkIdPaciente")
+    private List<CertificadoJpa> certificados;
+    
+ // Relación: Un Pacientes (registros) tiene muchos examenes optometricos
+    @OneToMany(mappedBy = "fkIdPaciente")
+    private List<ExamenOptometricoJpa> examenes;
    
-   
+// Relación: Un Pacientes (registros) tiene muchos historia clinicas
+    @OneToMany(mappedBy = "fkIdPaciente")
+    private List<HistoriaJpa> historias;
 
 
 }
