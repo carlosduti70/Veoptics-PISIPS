@@ -36,11 +36,7 @@ public class PacienteJpa implements Serializable {
 	private String nombre;
 	private char estado;
 	
-	// Relación: Muchos Pacientes (registros) pertenecen a un Usuario
-    // En la imagen, sv_paciente tiene la FK "id_usuario"
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private UsuarioJpa usuario;
+
 	
     
  // Relación: Un Pacientes (registros) pertenecen a muchos Certificado
