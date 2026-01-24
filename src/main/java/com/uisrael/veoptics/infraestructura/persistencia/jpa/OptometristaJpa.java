@@ -16,38 +16,27 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "sv_optometrista")
-public class OptometristaJpa implements Serializable  {
-	
-	
+public class OptometristaJpa implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idOptometrista;
 	private String nombre;
 	private String apellido;
-	private String  ci;
+	private String ci;
 	private String registroProfesional;
 	private String telefono;
 	private char estado;
-	
+
 	// Relación: Muchos registros de Optometrista pertenecen a un Usuario
 	@ManyToOne
-    @JoinColumn(name = "fkUsuario")
-    private UsuarioJpa fkUsuario;
+	@JoinColumn(name = "fkUsuario")
+	private UsuarioJpa fkUsuario;
 
 	// Relación: Un optometrista pertenecen a varios historia
-	
-	@OneToMany (mappedBy ="fkIdOptometrista")
-	private List<HistoriaJpa> historias;
-    
 
-	// Relación: Un optometrista pertenecen a varios certificados
-	
-	@OneToMany (mappedBy ="fkIdOptometrista")
-	private List<CertificadoJpa> certificados;
-	
-	// Relación: Un optometrista pertenecen a varios examenes optometrisoc
-	
-	@OneToMany (mappedBy ="fkIdExamen")
-	private List<ExamenOptometricoJpa> examenes;
+	@OneToMany(mappedBy = "fkIdOptometrista")
+	private List<HistoriaJpa> historias;
+
 }

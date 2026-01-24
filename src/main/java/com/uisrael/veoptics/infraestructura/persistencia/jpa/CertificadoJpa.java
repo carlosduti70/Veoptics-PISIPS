@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -32,20 +33,8 @@ public class CertificadoJpa implements Serializable{
 	
 	
 	
-	// Relación: Muchos Certificados (registros) se puede generar a un paciente
-	@ManyToOne
-	@JoinColumn(name = "fkIdPaciente")
-	private PacienteJpa fkIdPaciente;
-	
-	
- // Relación: Un certificado  (registros) pertenecen a muchos Examenes optometricos
-    @OneToMany(mappedBy = "fkIdCertificado")
-    private List<ExamenOptometricoJpa> examenoptometricos;
-
-    
-	// Relación: Muchos Certificados (registros) a un optometrista
-	@ManyToOne
-	@JoinColumn(name = "fkIdOptometrista")
-	private OptometristaJpa fkIdOptometrista;
+	@OneToOne
+    @JoinColumn(name = "id_examen_fk", unique = true)
+    private ExamenOptometricoJpa examen;
 
 }

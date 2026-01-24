@@ -18,7 +18,6 @@ import lombok.Data;
 @Entity
 @Table(name = "sv_paciente")
 public class PacienteJpa implements Serializable {
-	
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -26,7 +25,7 @@ public class PacienteJpa implements Serializable {
 	private int idPaciente;
 	private String apellido;
 	private String ci;
-	private LocalDate  fecNacimiento;
+	private LocalDate fecNacimiento;
 	private String direccion;
 	private String telefono;
 	private String correo;
@@ -35,21 +34,13 @@ public class PacienteJpa implements Serializable {
 	private LocalDate fecPrimero;
 	private String nombre;
 	private char estado;
-	
 
-	
-    
- // Relación: Un Pacientes (registros) pertenecen a muchos Certificado
-    @OneToMany(mappedBy = "fkIdPaciente")
-    private List<CertificadoJpa> certificados;
-    
- // Relación: Un Pacientes (registros) tiene muchos examenes optometricos
-    @OneToMany(mappedBy = "fkIdPaciente")
-    private List<ExamenOptometricoJpa> examenes;
-   
+	// Relación: Un Pacientes (registros) tiene muchos examenes optometricos
+	@OneToMany(mappedBy = "fkIdPaciente")
+	private List<ExamenOptometricoJpa> examenes;
+
 // Relación: Un Pacientes (registros) tiene muchos historia clinicas
-    @OneToMany(mappedBy = "fkIdPaciente")
-    private List<HistoriaJpa> historias;
-
+	@OneToMany(mappedBy = "fkIdPaciente")
+	private List<HistoriaJpa> historias;
 
 }
