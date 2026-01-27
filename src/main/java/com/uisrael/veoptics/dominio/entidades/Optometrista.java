@@ -2,9 +2,7 @@ package com.uisrael.veoptics.dominio.entidades;
 
 public final class Optometrista {
 	private final int idOptometrista;
-	private final String nombre;
-	private final String apellido;
-	private final String ci;
+
 	private final String registroProfesional;
 	private final String telefono;
 	private final char estado;
@@ -12,12 +10,9 @@ public final class Optometrista {
 	
 	
 	
-	public Optometrista(int idOptometrista, String nombre, String apellido, String ci, String registroProfesional,
+	public Optometrista(int idOptometrista, String registroProfesional,
 			String telefono, char estado) {
 		this.idOptometrista = idOptometrista;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.ci = ci;
 		this.registroProfesional = registroProfesional;
 		this.telefono = telefono;
 		this.estado = estado;
@@ -26,21 +21,6 @@ public final class Optometrista {
 
 	public int getIdOptometrista() {
 		return idOptometrista;
-	}
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public String getApellido() {
-		return apellido;
-	}
-
-
-	public String getCi() {
-		return ci;
 	}
 
 

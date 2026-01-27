@@ -22,9 +22,6 @@ public class OptometristaJpa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idOptometrista;
-	private String nombre;
-	private String apellido;
-	private String ci;
 	private String registroProfesional;
 	private String telefono;
 	private char estado;
