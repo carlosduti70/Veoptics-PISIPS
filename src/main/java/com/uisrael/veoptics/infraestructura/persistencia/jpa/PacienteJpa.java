@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,27 +21,29 @@ import lombok.Data;
 public class PacienteJpa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPaciente;
-	private String apellido;
-	private String ci;
-	private LocalDate fecNacimiento;
-	private String direccion;
-	private String telefono;
-	private String correo;
-	private String motivoConsulta;
-	private LocalDate fecRegistro;
-	private LocalDate fecPrimero;
-	private String nombre;
-	private char estado;
 
-	// Relación: Un Pacientes (registros) tiene muchos examenes optometricos
-	@OneToMany(mappedBy = "fkIdPaciente")
-	private List<ExamenOptometricoJpa> examenes;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idPaciente;
 
-// Relación: Un Pacientes (registros) tiene muchos historia clinicas
-	@OneToMany(mappedBy = "fkIdPaciente")
-	private List<HistoriaJpa> historias;
+    private String nombre;
+    private String apellido;
+    
+    @Column(unique = true)
+    private String ci;
+    
+    private LocalDate fecNacimiento;
+    private String direccion;
+    private String telefono;
+    private String correo;
+    
+    private LocalDate fecRegistro;
+    private char estado;
+
+    @OneToMany(mappedBy = "paciente")
+    private List<ExamenOptometricoJpa> examenes;
+
+    @OneToMany(mappedBy = "paciente")
+    private List<HistoriaJpa> historias;
 
 }

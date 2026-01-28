@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,36 +19,44 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "sv_examen_optometrico")
-public class ExamenOptometricoJpa implements Serializable{
+public class ExamenOptometricoJpa implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idExamen;
 
-	private int idexamen;
 	private LocalDate fecha;
-	private String esfera_od;
-	private String cilindro_od;
-	private String eje_od;
-	private String esfera_oi;
-	private String cilindro_oi;
-	private String eje_oi;
-	private String adicion_od;
-	private String adicion_oi;
-	private String agudeza_visual_cerca_oi;
-	private String agudeza_visual_lejos_oi;
-	private String agudeza_visual_lejos_od;
-	private String agudeza_visual_cerca_od;
-	private String altura_oi;
-	private String altura_od;
-	
-	 // Relación: Muchos Examenes optometricos (registros) pertenecen a un paciente
-    @ManyToOne
-    @JoinColumn(name = "fkIdPaciente")
-    private PacienteJpa fkIdPaciente;
-	
-	// Relación: Muchos examen optometrico (registros) se puede generar a un optometrista
+
+	// Ojo Derecho (OD)
+	private String esferaOd;
+	private String cilindroOd;
+	private String ejeOd;
+	private String adicionOd;
+	private String agudezaVisualLejosOd;
+	private String agudezaVisualCercaOd;
+	private String alturaOd;
+
+	// Ojo Izquierdo (OI)
+	private String esferaOi;
+	private String cilindroOi;
+	private String ejeOi;
+	private String adicionOi;
+	private String agudezaVisualLejosOi;
+	private String agudezaVisualCercaOi;
+	private String alturaOi;
+
 	@ManyToOne
-	@JoinColumn(name = "id_optometrista_fk") // Nombre claro en la BD
+	@JoinColumn(name = "id_paciente_fk")
+	private PacienteJpa paciente;
+
+	@ManyToOne
+	@JoinColumn(name = "id_optometrista_fk")
 	private OptometristaJpa optometrista;
+
+	// Opcional: Relación con certificado si quieres navegar desde el examen al
+	// certificado
+	@OneToOne(mappedBy = "examen", cascade = CascadeType.ALL)
+	private CertificadoJpa certificado;
 
 }

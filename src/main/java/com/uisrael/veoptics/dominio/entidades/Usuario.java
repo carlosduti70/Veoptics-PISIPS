@@ -1,19 +1,20 @@
 package com.uisrael.veoptics.dominio.entidades;
 
-
 public final class Usuario {
 
-    private final int idUsuario;
-    private final String nombre;
-    private final String apellido;
-    private final String cedula;
-    private final String correo;
-    private final String clave;
-    private final Boolean estado;
-    
+	private final int idUsuario;
+	private final String nombre;
+	private final String apellido;
+	private final String cedula;
+	private final String correo;
+	private final String clave;
+	private final Boolean estado;
+
+	private final Rol rol;
+
 	public Usuario(int idUsuario, String nombre, String apellido, String cedula, String correo, String clave,
-			Boolean estado) {
-		
+			Boolean estado, Rol rol) {
+		super();
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -21,6 +22,7 @@ public final class Usuario {
 		this.correo = correo;
 		this.clave = clave;
 		this.estado = estado;
+		this.rol = rol;
 	}
 
 	public int getIdUsuario() {
@@ -51,13 +53,8 @@ public final class Usuario {
 		return estado;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula="
-				+ cedula + ", correo=" + correo + ", clave=" + clave + ", estado=" + estado + "]";
+	public Rol getRol() {
+		return rol;
 	}
-    
- 
 
-    
 }

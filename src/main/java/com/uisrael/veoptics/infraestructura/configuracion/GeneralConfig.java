@@ -77,8 +77,8 @@ public class GeneralConfig {
 	};
 
 	@Bean
-	IUsuarioCasoUso usuarioCasoUso(IUsuarioRepositorio repositorio) {
-		return new UsuarioCasoUsoImpl(repositorio);
+	IUsuarioCasoUso usuarioCasoUso(IUsuarioRepositorio repositorio, IRolRepositorio rolRepositorio) {
+		return new UsuarioCasoUsoImpl(repositorio, rolRepositorio);
 	};
 	
 	@Bean

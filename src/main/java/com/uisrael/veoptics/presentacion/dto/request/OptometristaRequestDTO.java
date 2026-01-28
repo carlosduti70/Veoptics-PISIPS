@@ -13,5 +13,7 @@ public class OptometristaRequestDTO {
 	private String telefono;
 	@NotBlank
 	private char estado;
+	@NotBlank
+    private Integer idUsuario;
 
 }

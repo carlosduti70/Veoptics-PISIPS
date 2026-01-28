@@ -24,7 +24,7 @@ public class RolCasoUsoImpl implements IRolCasoUso {
 	@Override
 	public Rol obtenerPorId(int id) {
 		
-		return repositorio.buscarPorId(id).orElseThrow(()->new RuntimeException("Rol no encontrado"));
+		return repositorio.buscarRolPorId(id).orElseThrow(()->new RuntimeException("Rol no encontrado"));
 	}
 
 	@Override

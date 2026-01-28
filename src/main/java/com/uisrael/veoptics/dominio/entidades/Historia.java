@@ -3,58 +3,60 @@ package com.uisrael.veoptics.dominio.entidades;
 import java.time.LocalDate;
 
 public final class Historia {
-	
-	private final int id_historia;
-	private final String tbl_antecedente;
-	private final String tbl_diagnostico;
-	private final String tbl_notas_clinica;
-	private final LocalDate tbl_fecha;
-	
-	
-	public Historia(int id_historia, String tbl_antecedente, String tbl_diagnostico, String tbl_notas_clinica,
-			LocalDate tbl_fecha) {
-		
-		this.id_historia = id_historia;
-		this.tbl_antecedente = tbl_antecedente;
-		this.tbl_diagnostico = tbl_diagnostico;
-		this.tbl_notas_clinica = tbl_notas_clinica;
-		this.tbl_fecha = tbl_fecha;
+
+	private final int idHistoria;
+	private final String antecedente;
+	private final String diagnostico;
+	private final String notasClinica;
+	private final LocalDate fecha;
+	private final String motivoConsulta;
+	// RELACIONES
+	private final Paciente paciente;
+	private final Optometrista optometrista;
+
+	public Historia(int idHistoria, String antecedente, String diagnostico, String notasClinica, LocalDate fecha,
+			String motivoConsulta, Paciente paciente, Optometrista optometrista) {
+		super();
+		this.idHistoria = idHistoria;
+		this.antecedente = antecedente;
+		this.diagnostico = diagnostico;
+		this.notasClinica = notasClinica;
+		this.fecha = fecha;
+		this.motivoConsulta = motivoConsulta;
+		this.paciente = paciente;
+		this.optometrista = optometrista;
 	}
 
-
-	public int getId_historia() {
-		return id_historia;
+	public int getIdHistoria() {
+		return idHistoria;
 	}
 
-
-	public String getTbl_antecedente() {
-		return tbl_antecedente;
+	public String getAntecedente() {
+		return antecedente;
 	}
 
-
-	public String getTbl_diagnostico() {
-		return tbl_diagnostico;
+	public String getDiagnostico() {
+		return diagnostico;
 	}
 
-
-	public String getTbl_notas_clinica() {
-		return tbl_notas_clinica;
+	public String getNotasClinica() {
+		return notasClinica;
 	}
 
-
-	public LocalDate getTbl_fecha() {
-		return tbl_fecha;
+	public LocalDate getFecha() {
+		return fecha;
 	}
 
-
-	@Override
-	public String toString() {
-		return "HistoriaClinica [id_historia=" + id_historia + ", tbl_antecedente=" + tbl_antecedente
-				+ ", tbl_diagnostico=" + tbl_diagnostico + ", tbl_notas_clinica=" + tbl_notas_clinica + ", tbl_fecha="
-				+ tbl_fecha + "]";
+	public String getMotivoConsulta() {
+		return motivoConsulta;
 	}
 
-	
-	
-	
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public Optometrista getOptometrista() {
+		return optometrista;
+	}
+
 }
