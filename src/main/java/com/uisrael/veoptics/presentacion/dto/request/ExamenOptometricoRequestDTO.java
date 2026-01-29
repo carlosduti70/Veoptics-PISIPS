@@ -3,38 +3,48 @@ package com.uisrael.veoptics.presentacion.dto.request;
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class ExamenOptometricoRequestDTO {
-	
+
+	@NotBlank
+	private int idExamen;
 	@NotBlank
 	private LocalDate fecha;
 	@NotBlank
-	private String esfera_od;
+	private String esferaOd;
 	@NotBlank
-	private String cilindro_od;
+	private String cilindroOd;
 	@NotBlank
-	private String eje_od;
+	private String ejeOd;
 	@NotBlank
-	private String esfera_oi;
+	private String adicionOd;
 	@NotBlank
-	private String cilindro_oi;
+	private String agudezaVisualLejosOd;
 	@NotBlank
-	private String eje_oi;
+	private String agudezaVisualCercaOd;
 	@NotBlank
-	private String adicion_od;
+	private String alturaOd;
 	@NotBlank
-	private String adicion_oi;
+	private String esferaOi;
 	@NotBlank
-	private String agudeza_visual_cerca_oi;
+	private String cilindroOi;
 	@NotBlank
-	private String agudeza_visual_lejos_oi;
+	private String ejeOi;
 	@NotBlank
-	private String agudeza_visual_lejos_od;
+	private String adicionOi;
 	@NotBlank
-	private String agudeza_visual_cerca_od;
+	private String agudezaVisualLejosOi;
 	@NotBlank
-	private String altura_oi;
+	private String agudezaVisualCercaOi;
 	@NotBlank
-	private String altura_od;
+	private String alturaOi;
+
+	@NotNull(message = "El ID del paciente es obligatorio")
+	private int idPaciente;
+	@NotNull(message = "El ID del optometrista es obligatorio")
+	private int idOptometrista;
 
 }

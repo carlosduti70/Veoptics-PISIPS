@@ -124,8 +124,9 @@ public class GeneralConfig {
 	};
 
 	@Bean
-	IExamenOptometricoCasoUso examenoptometricoCasoUso(IExamenOptometricoRepositorio repositorio) {
-		return new ExamenOptometricoCasoUsoImpl(repositorio);
+	IExamenOptometricoCasoUso examenoptometricoCasoUso(IExamenOptometricoRepositorio repositorio,
+			IPacienteRepositorio pacienteRepositorio, IOptometristaRepositorio optometristaRepositorio) {
+		return new ExamenOptometricoCasoUsoImpl(repositorio, pacienteRepositorio, optometristaRepositorio);
 	};
 
 }
