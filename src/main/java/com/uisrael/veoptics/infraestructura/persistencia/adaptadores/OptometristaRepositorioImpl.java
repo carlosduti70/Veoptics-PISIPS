@@ -13,7 +13,8 @@ public class OptometristaRepositorioImpl implements IOptometristaRepositorio {
 	private final IOptometristaJpaRepositorio jpaOptometristaRepositorio;
 	private final IOptometristaJpaMapper entityOptometristaMapper;
 
-	public OptometristaRepositorioImpl(IOptometristaJpaRepositorio jpaRepositorio, IOptometristaJpaMapper entityMapper) {
+	public OptometristaRepositorioImpl(IOptometristaJpaRepositorio jpaRepositorio,
+			IOptometristaJpaMapper entityMapper) {
 		this.jpaOptometristaRepositorio = jpaRepositorio;
 		this.entityOptometristaMapper = entityMapper;
 	}
@@ -27,7 +28,7 @@ public class OptometristaRepositorioImpl implements IOptometristaRepositorio {
 
 	@Override
 	public Optional<Optometrista> buscarPorId(int id) {
-		return jpaOptometristaRepositorio.findById(id).map(entityOptometristaMapper:: toDomain);
+		return jpaOptometristaRepositorio.findById(id).map(entityOptometristaMapper::toDomain);
 	}
 
 	@Override
@@ -39,6 +40,12 @@ public class OptometristaRepositorioImpl implements IOptometristaRepositorio {
 	public void eliminar(int id) {
 		jpaOptometristaRepositorio.deleteById(id);
 
+	}
+
+	@Override
+	public Optional<Optometrista> buscarPorIdUsuario(int idUsuario) {
+		// TODO Auto-generated method stub
+		return jpaOptometristaRepositorio.findByUsuarioIdUsuario(idUsuario).map(entityOptometristaMapper::toDomain);
 	}
 
 }

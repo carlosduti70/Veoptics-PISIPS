@@ -24,11 +24,9 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso{
 	@Override
 	public Usuario crear(Usuario usuarioDesdeWeb) {
 		System.out.println("ID recibido del DTO: " + usuarioDesdeWeb.getRol().getIdRol());
-	    // 1. Buscamos el rol real para asegurar integridad (nuestra fuente de verdad)
 	    Rol rolValidado = rolRepositorio.buscarRolPorId(usuarioDesdeWeb.getRol().getIdRol())
 	            .orElseThrow(() -> new RuntimeException("El rol especificado no existe"));
 
-	    // Esto "limpia" cualquier dato falso que haya venido en el JSON (como un nombre de rol incorrecto)
 	    Usuario usuarioParaPersistir = new Usuario(
 	    	usuarioDesdeWeb.getIdUsuario(),
 	        usuarioDesdeWeb.getNombre(),
@@ -40,7 +38,6 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso{
 	        rolValidado
 	    );
 
-	    // 3. Enviamos a persistencia el objeto garantizado por el dominio
 	    return repositorio.guardar(usuarioParaPersistir);
 	}
 
@@ -48,7 +45,7 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso{
 	@Override
 	public Usuario obtenerPorId(int id) {
 		
-		return repositorio.buscarPorId(id).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
+		return repositorio.buscarPorId(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 	}
 
 

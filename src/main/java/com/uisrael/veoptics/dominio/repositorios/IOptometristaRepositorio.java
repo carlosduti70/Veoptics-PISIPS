@@ -10,6 +10,8 @@ public interface IOptometristaRepositorio {
 	Optometrista guardar(Optometrista optometrista);
 
 	Optional<Optometrista> buscarPorId(int id);
+	
+	Optional<Optometrista> buscarPorIdUsuario(int idUsuario);
 
 	List<Optometrista> listarTodos();
 
