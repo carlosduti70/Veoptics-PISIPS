@@ -100,8 +100,9 @@ public class GeneralConfig {
 	};
 
 	@Bean
-	IHistoriaCasoUso historiaCasoUso(IHistoriaRepositorio repositorio) {
-		return new HistoriaCasoUsoImpl(repositorio);
+	IHistoriaCasoUso historiaCasoUso(IHistoriaRepositorio repositorio, IPacienteRepositorio pacienteRepositorio,
+			IOptometristaRepositorio optometristaRepositorio) {
+		return new HistoriaCasoUsoImpl(repositorio, pacienteRepositorio, optometristaRepositorio);
 	};
 
 	@Bean

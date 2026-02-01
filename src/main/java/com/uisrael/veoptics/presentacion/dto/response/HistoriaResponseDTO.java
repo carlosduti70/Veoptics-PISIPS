@@ -2,44 +2,72 @@ package com.uisrael.veoptics.presentacion.dto.response;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
 
 public class HistoriaResponseDTO {
 
-		private  int id_historia;
-		private  String tbl_antecedente;
-		private  String tbl_diagnostico;
-		private  String tbl_notas_clinica;
-		private  LocalDate tbl_fecha;
-		public int getId_historia() {
-			return id_historia;
-		}
-		public void setId_historia(int id_historia) {
-			this.id_historia = id_historia;
-		}
-		public String getTbl_antecedente() {
-			return tbl_antecedente;
-		}
-		public void setTbl_antecedente(String tbl_antecedente) {
-			this.tbl_antecedente = tbl_antecedente;
-		}
-		public String getTbl_diagnostico() {
-			return tbl_diagnostico;
-		}
-		public void setTbl_diagnostico(String tbl_diagnostico) {
-			this.tbl_diagnostico = tbl_diagnostico;
-		}
-		public String getTbl_notas_clinica() {
-			return tbl_notas_clinica;
-		}
-		public void setTbl_notas_clinica(String tbl_notas_clinica) {
-			this.tbl_notas_clinica = tbl_notas_clinica;
-		}
-		public LocalDate getTbl_fecha() {
-			return tbl_fecha;
-		}
-		public void setTbl_fecha(LocalDate tbl_fecha) {
-			this.tbl_fecha = tbl_fecha;
-		}
-		
-	
+	private String antecedente;
+	private String diagnostico;
+	private String notasClinica;
+	private String motivoConsulta;
+	private LocalDate fecha;
+	private int idPaciente;
+	private int idOptometrista;
+
+	public String getAntecedente() {
+		return antecedente;
+	}
+
+	public void setAntecedente(String antecedente) {
+		this.antecedente = antecedente;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public String getNotasClinica() {
+		return notasClinica;
+	}
+
+	public void setNotasClinica(String notasClinica) {
+		this.notasClinica = notasClinica;
+	}
+
+	public String getMotivoConsulta() {
+		return motivoConsulta;
+	}
+
+	public void setMotivoConsulta(String motivoConsulta) {
+		this.motivoConsulta = motivoConsulta;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public int getIdPaciente() {
+		return idPaciente;
+	}
+
+	public void setIdPaciente(int idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+
+	public int getIdOptometrista() {
+		return idOptometrista;
+	}
+
+	public void setIdOptometrista(int idOptometrista) {
+		this.idOptometrista = idOptometrista;
+	}
+
 }

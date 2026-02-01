@@ -14,13 +14,20 @@ public class HistoriaRequestDTO {
 	// private  int id_historia;
 	
 	@NotBlank
-	private  String tbl_antecedente;
+	private  String antecedente;
 	@NotBlank
-	private  String tbl_diagnostico;
+	private  String diagnostico;
 	@NotBlank
-	private  String tbl_notas_clinica;
+	private  String notasClinica;
 	@NotBlank
-	private  LocalDate tbl_fecha;
+	private  String motivoConsulta;
+	@NotBlank
+	private  LocalDate fecha;
+	@NotBlank
+	private  int idPaciente;
+	@NotBlank
+	private  int idOptometrista;
+	
 	
 
 }
