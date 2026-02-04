@@ -23,28 +23,39 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ExamenOptometricoControlador {
 	// dependencias de la arquitectura
-			private final IExamenOptometricoCasoUso examenoptometricoCasoUso;// casos de uso
-			private final IExamenOptometricoDtoMapper mapper;// mapeadores
-			
-			public ExamenOptometricoControlador(IExamenOptometricoCasoUso examenoptometricoCasoUso, IExamenOptometricoDtoMapper mapper) {
-				
-				super();
-				this.examenoptometricoCasoUso = examenoptometricoCasoUso;
-				this.mapper = mapper;
-				
-				}
-			
-			@GetMapping("/listar")
-			public List<ExamenOptometricoResponseDTO> listar() {
-				return examenoptometricoCasoUso.listar().stream().map(mapper::toResponseDto).toList();
-				}
+	private final IExamenOptometricoCasoUso examenoptometricoCasoUso;// casos de uso
+	private final IExamenOptometricoDtoMapper mapper;// mapeadores
 
-				// post
-			@PostMapping("/crear")
-			@ResponseStatus(HttpStatus.CREATED)
-			
-			public ExamenOptometricoResponseDTO crear(@Valid @RequestBody ExamenOptometricoRequestDTO request) {
-				return mapper.toResponseDto(examenoptometricoCasoUso.crear(mapper.toDomain(request)));
-				}
+	public ExamenOptometricoControlador(IExamenOptometricoCasoUso examenoptometricoCasoUso,
+			IExamenOptometricoDtoMapper mapper) {
+
+		super();
+		this.examenoptometricoCasoUso = examenoptometricoCasoUso;
+		this.mapper = mapper;
+
+	}
+
+	@GetMapping("/listar")
+	public List<ExamenOptometricoResponseDTO> listar() {
+		return examenoptometricoCasoUso.listar().stream().map(mapper::toResponseDto).toList();
+	}
+
+	@GetMapping("/listarPorId")
+	public ExamenOptometricoResponseDTO listarPorId(int id) {
+		return mapper.toResponseDto(examenoptometricoCasoUso.obtenerPorId(id));
+	}
+
+	@GetMapping("/listarPaciente")
+	public List<ExamenOptometricoResponseDTO> listarPaciente(int id) {
+		return examenoptometricoCasoUso.obtenerPorIdPaciente(id).stream().map(mapper::toResponseDto).toList();
+	}
+
+	// post
+	@PostMapping("/crear")
+	@ResponseStatus(HttpStatus.CREATED)
+
+	public ExamenOptometricoResponseDTO crear(@Valid @RequestBody ExamenOptometricoRequestDTO request) {
+		return mapper.toResponseDto(examenoptometricoCasoUso.crear(mapper.toDomain(request)));
+	}
 
 }

@@ -40,5 +40,11 @@ public class ExamenOptometricoRepositorioImpl implements IExamenOptometricoRepos
 		jpaExamenOptometricoRepositorio.deleteById(id);
 
 	}
+//	findByUsuarioIdUsuario
+
+	@Override
+	public List<ExamenOptometrico> buscarPorIdPaciente(int idPaciente) {
+		return jpaExamenOptometricoRepositorio.findByPacienteIdPaciente(idPaciente).stream().map(entityExamenOptometricoMapper::toDomain).toList();
+	}
 
 }

@@ -63,4 +63,9 @@ public class ExamenOptometricoCasoUsoImpl implements IExamenOptometricoCasoUso {
 		repositorio.eliminar(id);
 	}
 
+	@Override
+	public List<ExamenOptometrico> obtenerPorIdPaciente(int idPaciente) {
+		return repositorio.buscarPorIdPaciente(idPaciente);
+	}
+
 }
