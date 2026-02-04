@@ -12,6 +12,7 @@ public class ExamenOptometricoResponseDTO {
 	private String adicionOd;
 	private String agudezaVisualLejosOd;
 	private String agudezaVisualCercaOd;
+	private String dnpOd;
 	private String alturaOd;
 	private String esferaOi;
 	private String cilindroOi;
@@ -19,7 +20,14 @@ public class ExamenOptometricoResponseDTO {
 	private String adicionOi;
 	private String agudezaVisualLejosOi;
 	private String agudezaVisualCercaOi;
+	private String dnpOi;
 	private String alturaOi;
+	private String diagnostico;
+	private String visionCercana;
+	private String visionLejana;
+	private String percepcionColores;
+	private String coloresVisibles;
+	
 	private int idPaciente;
 	private int idOptometrista;
 
@@ -87,6 +95,14 @@ public class ExamenOptometricoResponseDTO {
 		this.agudezaVisualCercaOd = agudezaVisualCercaOd;
 	}
 
+	public String getDnpOd() {
+		return dnpOd;
+	}
+
+	public void setDnpOd(String dnpOd) {
+		this.dnpOd = dnpOd;
+	}
+
 	public String getAlturaOd() {
 		return alturaOd;
 	}
@@ -143,12 +159,60 @@ public class ExamenOptometricoResponseDTO {
 		this.agudezaVisualCercaOi = agudezaVisualCercaOi;
 	}
 
+	public String getDnpOi() {
+		return dnpOi;
+	}
+
+	public void setDnpOi(String dnpOi) {
+		this.dnpOi = dnpOi;
+	}
+
 	public String getAlturaOi() {
 		return alturaOi;
 	}
 
 	public void setAlturaOi(String alturaOi) {
 		this.alturaOi = alturaOi;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public String getVisionCercana() {
+		return visionCercana;
+	}
+
+	public void setVisionCercana(String visionCercana) {
+		this.visionCercana = visionCercana;
+	}
+
+	public String getVisionLejana() {
+		return visionLejana;
+	}
+
+	public void setVisionLejana(String visionLejana) {
+		this.visionLejana = visionLejana;
+	}
+
+	public String getPercepcionColores() {
+		return percepcionColores;
+	}
+
+	public void setPercepcionColores(String percepcionColores) {
+		this.percepcionColores = percepcionColores;
+	}
+
+	public String getColoresVisibles() {
+		return coloresVisibles;
+	}
+
+	public void setColoresVisibles(String coloresVisibles) {
+		this.coloresVisibles = coloresVisibles;
 	}
 
 	public int getIdPaciente() {

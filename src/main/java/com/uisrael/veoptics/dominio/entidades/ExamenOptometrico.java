@@ -13,6 +13,7 @@ public class ExamenOptometrico {
 	private final String adicionOd;
 	private final String agudezaVisualLejosOd;
 	private final String agudezaVisualCercaOd;
+	private final String dnpOd;
 	private final String alturaOd;
 
 	// Ojo Izquierdo (OI)
@@ -22,16 +23,25 @@ public class ExamenOptometrico {
 	private final String adicionOi;
 	private final String agudezaVisualLejosOi;
 	private final String agudezaVisualCercaOi;
+	private final String dnpOi;
 	private final String alturaOi;
+
+	private final String diagnostico;
+	private final String visionCercana;
+	private final String visionLejana;
+	private final String percepcionColores;
+	private final String coloresVisibles;
 
 	// RELACIONES
 	private final Paciente paciente;
 	private final Optometrista optometrista;
 
 	public ExamenOptometrico(int idExamen, LocalDate fecha, String esferaOd, String cilindroOd, String ejeOd,
-			String adicionOd, String agudezaVisualLejosOd, String agudezaVisualCercaOd, String alturaOd,
+			String adicionOd, String agudezaVisualLejosOd, String agudezaVisualCercaOd, String dnpOd, String alturaOd,
 			String esferaOi, String cilindroOi, String ejeOi, String adicionOi, String agudezaVisualLejosOi,
-			String agudezaVisualCercaOi, String alturaOi, Paciente paciente, Optometrista optometrista) {
+			String agudezaVisualCercaOi, String dnpOi, String alturaOi, String diagnostico, String visionCercana,
+			String visionLejana, String percepcionColores, String coloresVisibles, Paciente paciente,
+			Optometrista optometrista) {
 		super();
 		this.idExamen = idExamen;
 		this.fecha = fecha;
@@ -41,6 +51,7 @@ public class ExamenOptometrico {
 		this.adicionOd = adicionOd;
 		this.agudezaVisualLejosOd = agudezaVisualLejosOd;
 		this.agudezaVisualCercaOd = agudezaVisualCercaOd;
+		this.dnpOd = dnpOd;
 		this.alturaOd = alturaOd;
 		this.esferaOi = esferaOi;
 		this.cilindroOi = cilindroOi;
@@ -48,7 +59,13 @@ public class ExamenOptometrico {
 		this.adicionOi = adicionOi;
 		this.agudezaVisualLejosOi = agudezaVisualLejosOi;
 		this.agudezaVisualCercaOi = agudezaVisualCercaOi;
+		this.dnpOi = dnpOi;
 		this.alturaOi = alturaOi;
+		this.diagnostico = diagnostico;
+		this.visionCercana = visionCercana;
+		this.visionLejana = visionLejana;
+		this.percepcionColores = percepcionColores;
+		this.coloresVisibles = coloresVisibles;
 		this.paciente = paciente;
 		this.optometrista = optometrista;
 	}
@@ -85,6 +102,10 @@ public class ExamenOptometrico {
 		return agudezaVisualCercaOd;
 	}
 
+	public String getDnpOd() {
+		return dnpOd;
+	}
+
 	public String getAlturaOd() {
 		return alturaOd;
 	}
@@ -113,8 +134,32 @@ public class ExamenOptometrico {
 		return agudezaVisualCercaOi;
 	}
 
+	public String getDnpOi() {
+		return dnpOi;
+	}
+
 	public String getAlturaOi() {
 		return alturaOi;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public String getVisionCercana() {
+		return visionCercana;
+	}
+
+	public String getVisionLejana() {
+		return visionLejana;
+	}
+
+	public String getPercepcionColores() {
+		return percepcionColores;
+	}
+
+	public String getColoresVisibles() {
+		return coloresVisibles;
 	}
 
 	public Paciente getPaciente() {

@@ -13,9 +13,10 @@ public final class Historia {
 	// RELACIONES
 	private final Paciente paciente;
 	private final Optometrista optometrista;
+	private final ExamenOptometrico examen;
 
 	public Historia(int idHistoria, String antecedente, String diagnostico, String notasClinica, LocalDate fecha,
-			String motivoConsulta, Paciente paciente, Optometrista optometrista) {
+			String motivoConsulta, Paciente paciente, Optometrista optometrista, ExamenOptometrico examen) {
 		super();
 		this.idHistoria = idHistoria;
 		this.antecedente = antecedente;
@@ -25,6 +26,7 @@ public final class Historia {
 		this.motivoConsulta = motivoConsulta;
 		this.paciente = paciente;
 		this.optometrista = optometrista;
+		this.examen = examen;
 	}
 
 	public int getIdHistoria() {
@@ -57,6 +59,10 @@ public final class Historia {
 
 	public Optometrista getOptometrista() {
 		return optometrista;
+	}
+
+	public ExamenOptometrico getExamen() {
+		return examen;
 	}
 
 }

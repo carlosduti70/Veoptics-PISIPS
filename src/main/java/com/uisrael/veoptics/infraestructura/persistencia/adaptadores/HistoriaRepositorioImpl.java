@@ -46,6 +46,12 @@ public class HistoriaRepositorioImpl implements IHistoriaRepositorio {
 		
 	}
 
+	@Override
+	public Optional<Historia> buscarPorIdExamen(int idExamen) {
+		// TODO Auto-generated method stub
+		return jpaRepositorio.findByExamenOptometricoIdExamen(idExamen) .map(entityMapper::toDomain);
+	}
+
 	
 	
 	

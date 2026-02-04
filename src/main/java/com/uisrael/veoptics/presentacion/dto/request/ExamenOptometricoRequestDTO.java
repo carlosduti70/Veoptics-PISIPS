@@ -26,6 +26,8 @@ public class ExamenOptometricoRequestDTO {
 	@NotBlank
 	private String agudezaVisualCercaOd;
 	@NotBlank
+	private String dnpOd;
+	@NotBlank
 	private String alturaOd;
 	@NotBlank
 	private String esferaOi;
@@ -40,7 +42,19 @@ public class ExamenOptometricoRequestDTO {
 	@NotBlank
 	private String agudezaVisualCercaOi;
 	@NotBlank
+	private String dnpOi;
+	@NotBlank
 	private String alturaOi;
+	@NotBlank
+	private String diagnostico;
+	@NotBlank
+	private String visionCercana;
+	@NotBlank
+	private String visionLejana;
+	@NotBlank
+	private String percepcionColores;
+	@NotBlank
+	private String coloresVisibles;
 
 	@NotNull(message = "El ID del paciente es obligatorio")
 	private int idPaciente;

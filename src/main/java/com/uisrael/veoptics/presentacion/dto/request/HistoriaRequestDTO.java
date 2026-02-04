@@ -5,29 +5,27 @@ import java.time.LocalDate;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-
 @Data
 
 public class HistoriaRequestDTO {
-	
-	
-	// private  int id_historia;
-	
+
+	// private int id_historia;
+
 	@NotBlank
-	private  String antecedente;
+	private String antecedente;
 	@NotBlank
-	private  String diagnostico;
+	private String diagnostico;
 	@NotBlank
-	private  String notasClinica;
+	private String notasClinica;
 	@NotBlank
-	private  String motivoConsulta;
+	private String motivoConsulta;
 	@NotBlank
-	private  LocalDate fecha;
+	private LocalDate fecha;
 	@NotBlank
-	private  int idPaciente;
+	private int idPaciente;
 	@NotBlank
-	private  int idOptometrista;
-	
-	
+	private int idOptometrista;
+	@NotBlank
+	private int idExamen;
 
 }

@@ -12,10 +12,12 @@ public interface IHistoriaDtoMapper {
 
 	@Mapping(target = "paciente.idPaciente", source = "idPaciente")
 	@Mapping(target = "optometrista.idOptometrista", source = "idOptometrista")
+	@Mapping(target = "examen.idExamen", source = "idExamen")
 	Historia toDomain(HistoriaRequestDTO historia);
 
 	@Mapping(target = "idPaciente", source = "paciente.idPaciente")
 	@Mapping(target = "idOptometrista", source = "optometrista.idOptometrista")
+	@Mapping(target = "idExamen", source = "examen.idExamen")
 	HistoriaResponseDTO toResponseDto(Historia historia);
 
 }

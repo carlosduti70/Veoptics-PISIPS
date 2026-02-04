@@ -13,6 +13,15 @@ public class HistoriaResponseDTO {
 	private LocalDate fecha;
 	private int idPaciente;
 	private int idOptometrista;
+	private int idExamen;
+
+	public int getIdExamen() {
+		return idExamen;
+	}
+
+	public void setIdExamen(int idExamen) {
+		this.idExamen = idExamen;
+	}
 
 	public String getAntecedente() {
 		return antecedente;

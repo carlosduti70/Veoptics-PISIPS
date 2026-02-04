@@ -46,6 +46,12 @@ public class ExamenOptometricoJpa implements Serializable {
 	private String agudezaVisualCercaOi;
 	private String alturaOi;
 
+	private String diagnostico;
+	private String visionCercana;
+	private String visionLejana;
+	private String percepcionColores;
+	private String coloresVisibles;
+
 	@ManyToOne
 	@JoinColumn(name = "id_paciente_fk")
 	private PacienteJpa paciente;
@@ -54,9 +60,8 @@ public class ExamenOptometricoJpa implements Serializable {
 	@JoinColumn(name = "id_optometrista_fk")
 	private OptometristaJpa optometrista;
 
-	// Opcional: Relación con certificado si quieres navegar desde el examen al
-	// certificado
-	@OneToOne(mappedBy = "examen", cascade = CascadeType.ALL)
-	private CertificadoJpa certificado;
+	// Historia
+	@OneToOne(mappedBy = "examenOptometrico")
+	private HistoriaJpa historia;
 
 }

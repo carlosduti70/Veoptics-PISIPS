@@ -3,6 +3,7 @@ package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -25,8 +27,6 @@ public class HistoriaJpa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idHistoria;
 
-	// CORRECCIÓN: Nombres de atributos limpios, mapeados a columnas con nombres
-	// específicos si lo deseas
 	@Column(name = "tbl_antecedente")
 	private String antecedente;
 
@@ -39,15 +39,18 @@ public class HistoriaJpa implements Serializable {
 	@Column(name = "tbl_fecha")
 	private LocalDate fecha;
 
-	// CORRECCIÓN: El motivo de consulta pertenece a la visita específica
 	private String motivoConsulta;
 
 	@ManyToOne
 	@JoinColumn(name = "id_paciente_fk")
 	private PacienteJpa paciente;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "id_optometrista_fk")
-	private OptometristaJpa optometrista;
+    @JoinColumn(name = "id_optometrista_fk")
+    private OptometristaJpa optometrista;
+
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "id_examen_fk", unique = true)
+	private ExamenOptometricoJpa examenOptometrico;
 
 }

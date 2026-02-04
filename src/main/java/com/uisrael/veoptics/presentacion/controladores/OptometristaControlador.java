@@ -1,6 +1,7 @@
 package com.uisrael.veoptics.presentacion.controladores;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,15 +42,11 @@ public class OptometristaControlador {
 	public List<OptometristaResponseDTO> listar() {
 		return optometristaCasoUso.listar().stream().map(mapper::toResponseDto).toList();
 		}
-	
+
 	@GetMapping("/buscarUsuario")
-	public ResponseEntity<OptometristaResponseDTO> buscarPorUsuario(@RequestParam("id") int idUsuario) {
-		Optometrista optometrista = optometristaCasoUso.obtenerPorIdUsurio(idUsuario );
-		
-		OptometristaResponseDTO respuesta = mapper.toResponseDto(optometrista);
-		
-		return ResponseEntity.ok(respuesta);
-		}
+	public OptometristaResponseDTO buscarPorUsuario(@RequestParam("id") int idUsuario) {
+	    return mapper.toResponseDto(optometristaCasoUso.obtenerPorIdUsurio(idUsuario));
+	}
 
 		// post
 	@PostMapping("/crear")

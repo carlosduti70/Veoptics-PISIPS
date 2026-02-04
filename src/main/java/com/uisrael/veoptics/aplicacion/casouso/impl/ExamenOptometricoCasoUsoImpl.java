@@ -26,10 +26,10 @@ public class ExamenOptometricoCasoUsoImpl implements IExamenOptometricoCasoUso {
 	public ExamenOptometrico crear(ExamenOptometrico examenoptometricoDesdeWeb) {
 		Paciente pacienteEnviado = pacienteRepositorio
 				.buscarPorId(examenoptometricoDesdeWeb.getPaciente().getIdPaciente())
-				.orElseThrow(() -> new RuntimeException("El rol especificado no existe"));
+				.orElseThrow(() -> new RuntimeException("El paciente especificado no existe"));
 		Optometrista optometristaEnviado = optometristaRepositorio
 				.buscarPorId(examenoptometricoDesdeWeb.getOptometrista().getIdOptometrista())
-				.orElseThrow(() -> new RuntimeException("El rol especificado no existe"));
+				.orElseThrow(() -> new RuntimeException("El optometrista especificado no existe"));
 
 		ExamenOptometrico examenFinal = new ExamenOptometrico(examenoptometricoDesdeWeb.getIdExamen(),
 				examenoptometricoDesdeWeb.getFecha(), examenoptometricoDesdeWeb.getEsferaOd(),
@@ -40,7 +40,10 @@ public class ExamenOptometricoCasoUsoImpl implements IExamenOptometricoCasoUso {
 				examenoptometricoDesdeWeb.getEjeOi(), examenoptometricoDesdeWeb.getAdicionOi(),
 				examenoptometricoDesdeWeb.getAgudezaVisualLejosOi(),
 				examenoptometricoDesdeWeb.getAgudezaVisualCercaOi(), examenoptometricoDesdeWeb.getAlturaOi(),
-				pacienteEnviado, optometristaEnviado);
+				examenoptometricoDesdeWeb.getDnpOi(), examenoptometricoDesdeWeb.getAlturaOi(),
+				examenoptometricoDesdeWeb.getDiagnostico(), examenoptometricoDesdeWeb.getVisionCercana(),
+				examenoptometricoDesdeWeb.getVisionLejana(), examenoptometricoDesdeWeb.getPercepcionColores(),
+				examenoptometricoDesdeWeb.getColoresVisibles(), pacienteEnviado, optometristaEnviado);
 
 		return repositorio.guardar(examenFinal);
 	}
