@@ -1,6 +1,6 @@
 package com.uisrael.veoptics.presentacion.dto.request;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ public class ExamenOptometricoRequestDTO {
 	@NotBlank
 	private int idExamen;
 	@NotBlank
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 	@NotBlank
 	private String esferaOd;
 	@NotBlank

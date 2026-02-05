@@ -1,17 +1,14 @@
 package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -26,7 +23,7 @@ public class ExamenOptometricoJpa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idExamen;
 
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 
 	// Ojo Derecho (OD)
 	private String esferaOd;
@@ -35,6 +32,7 @@ public class ExamenOptometricoJpa implements Serializable {
 	private String adicionOd;
 	private String agudezaVisualLejosOd;
 	private String agudezaVisualCercaOd;
+	private String dnpOd;
 	private String alturaOd;
 
 	// Ojo Izquierdo (OI)
@@ -44,6 +42,7 @@ public class ExamenOptometricoJpa implements Serializable {
 	private String adicionOi;
 	private String agudezaVisualLejosOi;
 	private String agudezaVisualCercaOi;
+	private String dnpOi;
 	private String alturaOi;
 
 	private String diagnostico;

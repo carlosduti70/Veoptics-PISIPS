@@ -1,10 +1,10 @@
 package com.uisrael.veoptics.dominio.entidades;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ExamenOptometrico {
 	private final int idExamen;
-	private final LocalDate fecha;
+	private final LocalDateTime fecha;
 
 	// Ojo Derecho (OD)
 	private final String esferaOd;
@@ -36,7 +36,7 @@ public class ExamenOptometrico {
 	private final Paciente paciente;
 	private final Optometrista optometrista;
 
-	public ExamenOptometrico(int idExamen, LocalDate fecha, String esferaOd, String cilindroOd, String ejeOd,
+	public ExamenOptometrico(int idExamen, LocalDateTime fecha, String esferaOd, String cilindroOd, String ejeOd,
 			String adicionOd, String agudezaVisualLejosOd, String agudezaVisualCercaOd, String dnpOd, String alturaOd,
 			String esferaOi, String cilindroOi, String ejeOi, String adicionOi, String agudezaVisualLejosOi,
 			String agudezaVisualCercaOi, String dnpOi, String alturaOi, String diagnostico, String visionCercana,
@@ -74,7 +74,7 @@ public class ExamenOptometrico {
 		return idExamen;
 	}
 
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 

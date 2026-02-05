@@ -29,31 +29,35 @@ public class OptometristaControlador {
 	// dependencias de la arquitectura
 	private final IOptometristaCasoUso optometristaCasoUso;// casos de uso
 	private final IOptometristaDtoMapper mapper;// mapeadores
-	
+
 	public OptometristaControlador(IOptometristaCasoUso optometristaCasoUso, IOptometristaDtoMapper mapper) {
-		
+
 		super();
 		this.optometristaCasoUso = optometristaCasoUso;
 		this.mapper = mapper;
-		
-		}
-	
+
+	}
+
 	@GetMapping("/listar")
 	public List<OptometristaResponseDTO> listar() {
 		return optometristaCasoUso.listar().stream().map(mapper::toResponseDto).toList();
-		}
-
-	@GetMapping("/buscarUsuario")
-	public OptometristaResponseDTO buscarPorUsuario(@RequestParam("id") int idUsuario) {
-	    return mapper.toResponseDto(optometristaCasoUso.obtenerPorIdUsurio(idUsuario));
 	}
 
-		// post
+	@GetMapping("/buscarUsuario")
+	public ResponseEntity<OptometristaResponseDTO> buscarPorUsuario(@RequestParam("id") int idUsuario) {
+		Optometrista optometrista = optometristaCasoUso.obtenerPorIdUsurio(idUsuario);
+
+		OptometristaResponseDTO respuesta = mapper.toResponseDto(optometrista);
+
+		return ResponseEntity.ok(respuesta);
+	}
+
+	// post
 	@PostMapping("/crear")
 	@ResponseStatus(HttpStatus.CREATED)
-	
+
 	public OptometristaResponseDTO crear(@Valid @RequestBody OptometristaRequestDTO request) {
 		return mapper.toResponseDto(optometristaCasoUso.crear(mapper.toDomain(request)));
-		}
+	}
 
 }

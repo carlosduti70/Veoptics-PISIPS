@@ -1,11 +1,11 @@
 package com.uisrael.veoptics.presentacion.dto.response;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ExamenOptometricoResponseDTO {
 
 	private int idExamen;
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 	private String esferaOd;
 	private String cilindroOd;
 	private String ejeOd;
@@ -39,11 +39,11 @@ public class ExamenOptometricoResponseDTO {
 		this.idExamen = idExamen;
 	}
 
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 
