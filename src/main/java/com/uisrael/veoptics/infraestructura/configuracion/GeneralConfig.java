@@ -22,6 +22,7 @@ import com.uisrael.veoptics.dominio.repositorios.IExamenOptometricoRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IHistoriaRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IOptometristaRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IPacienteRepositorio;
+import com.uisrael.veoptics.dominio.repositorios.IPasswordEncoderPort;
 import com.uisrael.veoptics.dominio.repositorios.IRolRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IUsuarioRepositorio;
 import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.CertificadoRepositorioImpl;
@@ -78,8 +79,8 @@ public class GeneralConfig {
 	};
 
 	@Bean
-	IUsuarioCasoUso usuarioCasoUso(IUsuarioRepositorio repositorio, IRolRepositorio rolRepositorio) {
-		return new UsuarioCasoUsoImpl(repositorio, rolRepositorio);
+	IUsuarioCasoUso usuarioCasoUso(IUsuarioRepositorio repositorio, IRolRepositorio rolRepositorio, IPasswordEncoderPort passwordEncoder) {
+		return new UsuarioCasoUsoImpl(repositorio, rolRepositorio, passwordEncoder);
 	};
 
 	@Bean

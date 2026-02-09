@@ -12,6 +12,8 @@ public interface IUsuarioCasoUso {
 	Usuario obtenerPorId(int id);
 	List<Usuario> listar();
 	void eliminar(int id);
+	
+	Usuario login(String correo, String clave);
 
 }
 

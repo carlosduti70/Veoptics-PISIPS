@@ -1,6 +1,8 @@
 package com.uisrael.veoptics.presentacion.controladores;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IUsuarioCasoUso;
 import com.uisrael.veoptics.dominio.entidades.Usuario;
+import com.uisrael.veoptics.presentacion.dto.request.LoginRequest;
 import com.uisrael.veoptics.presentacion.dto.request.UsuarioRequestDTO;
 import com.uisrael.veoptics.presentacion.dto.response.UsuarioResponseDTO;
 import com.uisrael.veoptics.presentacion.mapeadores.IUsuarioDtoMapper;
@@ -55,6 +58,29 @@ public class UsuarioControlador {
 	@ResponseStatus(HttpStatus.CREATED)
 	public UsuarioResponseDTO crear(@Valid @RequestBody UsuarioRequestDTO request) {
 		return mapper.toResponseDto(usuarioCasoUso.crear(mapper.toDomain(request)));
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> login(
+	        @RequestParam("correo") String correo, 
+	        @RequestParam("clave") String clave) {
+	    try {
+	        System.out.println("Intento de login con correo: " + correo);
+	        
+	        // 1. Llamar al caso de uso directamente con los strings recibidos
+	        Usuario usuarioLogueado = usuarioCasoUso.login(correo, clave);
+
+	        // 2. Convertir a Response
+	        UsuarioResponseDTO response = mapper.toResponseDto(usuarioLogueado);
+	        
+	        return ResponseEntity.ok(response);
+
+	    } catch (RuntimeException e) {
+	        Map<String, String> error = new HashMap<>();
+	        error.put("mensaje", "Credenciales inválidas");
+	        error.put("detalle", e.getMessage());
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+	    }
 	}
 
 }
