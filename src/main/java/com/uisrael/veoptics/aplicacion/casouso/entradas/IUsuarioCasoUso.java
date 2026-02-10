@@ -14,6 +14,8 @@ public interface IUsuarioCasoUso {
 	void eliminar(int id);
 	
 	Usuario login(String correo, String clave);
+	
+	void actualizarClave(int idUsuario, String nuevaClave);
 
 }
 

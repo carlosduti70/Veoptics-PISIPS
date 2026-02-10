@@ -38,6 +38,9 @@ public class UsuarioJpa implements Serializable {
 
 	private String clave;
 	private Boolean estado;
+	
+	@Column(name = "indicador", length = 1)
+    private String indicador;
 
 	// Relación: Muchos Usuarios pertenecen a un Rol
 	@ManyToOne

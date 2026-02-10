@@ -33,7 +33,7 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso {
 
 		Usuario usuarioParaPersistir = new Usuario(usuarioDesdeWeb.getIdUsuario(), usuarioDesdeWeb.getNombre(),
 				usuarioDesdeWeb.getApellido(), usuarioDesdeWeb.getCedula(), usuarioDesdeWeb.getCorreo(),
-				claveEncriptada, usuarioDesdeWeb.getEstado(), rolValidado);
+				claveEncriptada, usuarioDesdeWeb.getEstado(), "N", rolValidado);
 
 		return repositorio.guardar(usuarioParaPersistir);
 	}
@@ -65,6 +65,17 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso {
 		}
 
 		return usuarioEncontrado;
+	}
+
+	@Override
+	public void actualizarClave(int idUsuario, String nuevaClave) {
+		if (repositorio.buscarPorId(idUsuario).isEmpty()) {
+			throw new RuntimeException("Usuario no encontrado");
+		}
+
+		String nuevaClaveEncriptada = passwordEncoder.encode(nuevaClave);
+
+		repositorio.actualizarClave(idUsuario, nuevaClaveEncriptada);
 	}
 
 }

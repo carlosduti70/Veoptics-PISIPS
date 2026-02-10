@@ -39,8 +39,9 @@ public class DataInitializer {
                         "Sistema", 
                         "9999999999", 
                         "admin@veoptics.com", 
-                        claveEncriptada, // <--- Pasamos la clave ya encriptada
+                        claveEncriptada,
                         true,
+                        "N",
                         rolAdmin);
 
                 usuarioRepo.guardar(admin);

@@ -54,4 +54,22 @@ public class UsuarioRepositorioImpl implements IUsuarioRepositorio {
 		return jpaRepositorio.findByCorreo(correo).map(entityMapper::toDomain);
 	}
 
+	@Override
+	public void actualizarClave(int idUsuario, String nuevaClave) {
+		Optional<UsuarioJpa> usuarioOptional = jpaRepositorio.findById(idUsuario);
+
+		if (usuarioOptional.isPresent()) {
+			UsuarioJpa usuarioJpa = usuarioOptional.get();
+
+			usuarioJpa.setClave(nuevaClave);
+
+			usuarioJpa.setIndicador("A");
+
+			jpaRepositorio.save(usuarioJpa);
+		} else {
+			throw new RuntimeException("No se encontró el usuario con ID: " + idUsuario);
+		}
+
+	}
+
 }

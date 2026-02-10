@@ -9,11 +9,12 @@ public final class Usuario {
 	private final String correo;
 	private final String clave;
 	private final Boolean estado;
+	private final String indicador;
 
 	private final Rol rol;
 
 	public Usuario(int idUsuario, String nombre, String apellido, String cedula, String correo, String clave,
-			Boolean estado, Rol rol) {
+			Boolean estado, String indicador, Rol rol) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
@@ -22,6 +23,7 @@ public final class Usuario {
 		this.correo = correo;
 		this.clave = clave;
 		this.estado = estado;
+		this.indicador = indicador;
 		this.rol = rol;
 	}
 
@@ -55,6 +57,10 @@ public final class Usuario {
 
 	public Rol getRol() {
 		return rol;
+	}
+
+	public String getIndicador() {
+		return indicador;
 	}
 
 }

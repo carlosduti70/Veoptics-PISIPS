@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IUsuarioCasoUso;
 import com.uisrael.veoptics.dominio.entidades.Usuario;
-import com.uisrael.veoptics.presentacion.dto.request.LoginRequest;
 import com.uisrael.veoptics.presentacion.dto.request.UsuarioRequestDTO;
 import com.uisrael.veoptics.presentacion.dto.response.UsuarioResponseDTO;
 import com.uisrael.veoptics.presentacion.mapeadores.IUsuarioDtoMapper;
@@ -59,28 +58,44 @@ public class UsuarioControlador {
 	public UsuarioResponseDTO crear(@Valid @RequestBody UsuarioRequestDTO request) {
 		return mapper.toResponseDto(usuarioCasoUso.crear(mapper.toDomain(request)));
 	}
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<?> login(
-	        @RequestParam("correo") String correo, 
-	        @RequestParam("clave") String clave) {
-	    try {
-	        System.out.println("Intento de login con correo: " + correo);
-	        
-	        // 1. Llamar al caso de uso directamente con los strings recibidos
-	        Usuario usuarioLogueado = usuarioCasoUso.login(correo, clave);
+	public ResponseEntity<?> login(@RequestParam("correo") String correo, @RequestParam("clave") String clave) {
+		try {
+			System.out.println("Intento de login con correo: " + correo);
 
-	        // 2. Convertir a Response
-	        UsuarioResponseDTO response = mapper.toResponseDto(usuarioLogueado);
-	        
-	        return ResponseEntity.ok(response);
+			// 1. Llamar al caso de uso directamente con los strings recibidos
+			Usuario usuarioLogueado = usuarioCasoUso.login(correo, clave);
 
-	    } catch (RuntimeException e) {
-	        Map<String, String> error = new HashMap<>();
-	        error.put("mensaje", "Credenciales inválidas");
-	        error.put("detalle", e.getMessage());
-	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
-	    }
+			// 2. Convertir a Response
+			UsuarioResponseDTO response = mapper.toResponseDto(usuarioLogueado);
+
+			return ResponseEntity.ok(response);
+
+		} catch (RuntimeException e) {
+			Map<String, String> error = new HashMap<>();
+			error.put("mensaje", "Credenciales inválidas");
+			error.put("detalle", e.getMessage());
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+		}
+	}
+
+	@PostMapping("/actualizarclave")
+	public ResponseEntity<?> actualizarClave(@RequestParam("idUsuario") int idUsuario, @RequestParam("nuevaClave") String nuevaClave) {
+		try {
+			usuarioCasoUso.actualizarClave(idUsuario, nuevaClave);
+
+			Map<String, String> response = new HashMap<>();
+			response.put("mensaje", "Contraseña actualizada correctamente. Por favor inicie sesión.");
+
+			return ResponseEntity.ok(response);
+
+		} catch (RuntimeException e) {
+			Map<String, String> error = new HashMap<>();
+			error.put("error", "Error al actualizar contraseña");
+			error.put("detalle", e.getMessage());
+			return ResponseEntity.badRequest().body(error);
+		}
 	}
 
 }

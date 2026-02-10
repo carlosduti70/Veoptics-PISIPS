@@ -1,18 +1,17 @@
 package com.uisrael.veoptics.presentacion.dto.response;
 
-
 public class UsuarioResponseDTO {
-	
-	
+
 	private int idUsuario;
-    private String nombre;
-    private String apellido;
-    private String cedula;
-    private String correo;
-    private Boolean estado;
-    
-    // Aquí agregamos el dato del rol
-    private String nombreRol;
+	private String nombre;
+	private String apellido;
+	private String cedula;
+	private String correo;
+	private Boolean estado;
+	private String indicador;
+
+	// Aquí agregamos el dato del rol
+	private String nombreRol;
 
 	public int getIdUsuario() {
 		return idUsuario;
@@ -70,7 +69,12 @@ public class UsuarioResponseDTO {
 		this.nombreRol = nombreRol;
 	}
 
-    
-	
-	
+	public String getIndicador() {
+		return indicador;
+	}
+
+	public void setIndicador(String indicador) {
+		this.indicador = indicador;
+	}
+
 }

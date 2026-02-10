@@ -12,6 +12,8 @@ public interface IUsuarioRepositorio {
 	List<Usuario> listarTodos();
 	void eliminar(int id);
 	
+	void actualizarClave(int idUsuario, String nuevaClave);
+	
 	Optional<Usuario> findByCorreo(String correo);
 
 }
