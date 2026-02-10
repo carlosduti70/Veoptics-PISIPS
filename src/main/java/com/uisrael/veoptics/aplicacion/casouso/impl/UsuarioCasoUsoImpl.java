@@ -26,6 +26,14 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso {
 	public Usuario crear(Usuario usuarioDesdeWeb) {
 		System.out.println("ID recibido del DTO: " + usuarioDesdeWeb.getRol().getIdRol());
 
+		if (repositorio.existePorCedula(usuarioDesdeWeb.getCedula())) {
+			throw new RuntimeException("La cédula ya se encuentra registrada");
+		}
+
+		if (repositorio.existePorCorreo(usuarioDesdeWeb.getCorreo())) {
+			throw new RuntimeException("El correo electrónico ya está en uso");
+		}
+
 		Rol rolValidado = rolRepositorio.buscarRolPorId(usuarioDesdeWeb.getRol().getIdRol())
 				.orElseThrow(() -> new RuntimeException("El rol especificado no existe"));
 
@@ -76,6 +84,30 @@ public class UsuarioCasoUsoImpl implements IUsuarioCasoUso {
 		String nuevaClaveEncriptada = passwordEncoder.encode(nuevaClave);
 
 		repositorio.actualizarClave(idUsuario, nuevaClaveEncriptada);
+	}
+
+	@Override
+	public Usuario actualizarInformacion(Usuario usuarioWeb) {
+		if (repositorio.buscarPorId(usuarioWeb.getIdUsuario()).isEmpty()) {
+			throw new RuntimeException("Usuario no encontrado");
+		}
+
+		if (repositorio.existePorCedulaYNoId(usuarioWeb.getCedula(), usuarioWeb.getIdUsuario())) {
+			throw new RuntimeException("La cédula ya está registrada por otro usuario");
+		}
+
+		if (repositorio.existePorCorreoYNoId(usuarioWeb.getCorreo(), usuarioWeb.getIdUsuario())) {
+			throw new RuntimeException("El correo ya está registrado por otro usuario");
+		}
+
+		Rol rolValidado = rolRepositorio.buscarRolPorId(usuarioWeb.getRol().getIdRol())
+				.orElseThrow(() -> new RuntimeException("Rol no válido"));
+
+		Usuario usuarioParaActualizar = new Usuario(usuarioWeb.getIdUsuario(), usuarioWeb.getNombre(),
+				usuarioWeb.getApellido(), usuarioWeb.getCedula(), usuarioWeb.getCorreo(), null, usuarioWeb.getEstado(),
+				null, rolValidado);
+
+		return repositorio.actualizar(usuarioParaActualizar);
 	}
 
 }

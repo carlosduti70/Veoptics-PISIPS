@@ -5,9 +5,12 @@ import java.util.Optional;
 
 import com.uisrael.veoptics.dominio.entidades.Usuario;
 import com.uisrael.veoptics.dominio.repositorios.IUsuarioRepositorio;
+import com.uisrael.veoptics.infraestructura.persistencia.jpa.RolJpa;
 import com.uisrael.veoptics.infraestructura.persistencia.jpa.UsuarioJpa;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IUsuarioJpaMapper;
 import com.uisrael.veoptics.infraestructura.repositorios.IUsuarioJpaRepositorio;
+
+import jakarta.transaction.Transactional;
 
 public class UsuarioRepositorioImpl implements IUsuarioRepositorio {
 
@@ -70,6 +73,38 @@ public class UsuarioRepositorioImpl implements IUsuarioRepositorio {
 			throw new RuntimeException("No se encontró el usuario con ID: " + idUsuario);
 		}
 
+	}
+
+	@Override
+	public boolean existePorCedula(String cedula) {
+		return jpaRepositorio.existsByCedula(cedula);
+	}
+
+	@Override
+	public boolean existePorCorreo(String correo) {
+		return jpaRepositorio.existsByCorreo(correo);
+	}
+
+	@Override
+	@Transactional
+	public Usuario actualizar(Usuario usuarioDomain) {
+		RolJpa rolJpa = new RolJpa();
+		rolJpa.setIdRol(usuarioDomain.getRol().getIdRol());
+		jpaRepositorio.actualizarDatosGenerales(usuarioDomain.getIdUsuario(), usuarioDomain.getNombre(),
+				usuarioDomain.getApellido(), usuarioDomain.getCedula(), usuarioDomain.getCorreo(),
+				usuarioDomain.getEstado(),
+				rolJpa);
+		return usuarioDomain;
+	}
+
+	@Override
+	public boolean existePorCorreoYNoId(String correo, int idUsuario) {
+		return jpaRepositorio.existsByCorreoAndIdUsuarioNot(correo, idUsuario);
+	}
+
+	@Override
+	public boolean existePorCedulaYNoId(String cedula, int idUsuario) {
+		return jpaRepositorio.existsByCedulaAndIdUsuarioNot(cedula, idUsuario);
 	}
 
 }

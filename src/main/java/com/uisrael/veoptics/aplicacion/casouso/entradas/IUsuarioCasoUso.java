@@ -16,6 +16,8 @@ public interface IUsuarioCasoUso {
 	Usuario login(String correo, String clave);
 	
 	void actualizarClave(int idUsuario, String nuevaClave);
+	
+	Usuario actualizarInformacion(Usuario usuario);
 
 }
 

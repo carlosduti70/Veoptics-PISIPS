@@ -5,6 +5,7 @@ import org.mapstruct.Mapping;
 
 import com.uisrael.veoptics.dominio.entidades.Usuario;
 import com.uisrael.veoptics.presentacion.dto.request.UsuarioRequestDTO;
+import com.uisrael.veoptics.presentacion.dto.request.UsuarioUpdateDTO;
 import com.uisrael.veoptics.presentacion.dto.response.UsuarioResponseDTO;
 
 @Mapper(componentModel = "spring")
@@ -17,5 +18,10 @@ public interface IUsuarioDtoMapper {
 
 	@Mapping(target = "nombreRol", source = "rol.nombreRol")
 	UsuarioResponseDTO toResponseDto(Usuario usuario);
+	
+	@Mapping(target = "clave", ignore = true)     // Ignoramos clave
+    @Mapping(target = "indicador", ignore = true) // Ignoramos indicador
+    @Mapping(source = "idRol", target = "rol.idRol") // Mapeamos el ID del rol al objeto Rol
+    Usuario toDomain(UsuarioUpdateDTO request);
 
 }
