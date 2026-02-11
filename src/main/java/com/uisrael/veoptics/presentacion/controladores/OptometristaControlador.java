@@ -1,11 +1,9 @@
 package com.uisrael.veoptics.presentacion.controladores;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -26,7 +24,6 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/optometrista")
-@CrossOrigin(origins = "https://veoptics-pisips-front-jeriq35cu-carlosduti70s-projects.vercel.app")
 public class OptometristaControlador {
 	// dependencias de la arquitectura
 	private final IOptometristaCasoUso optometristaCasoUso;// casos de uso

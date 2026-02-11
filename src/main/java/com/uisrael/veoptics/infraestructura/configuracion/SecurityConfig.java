@@ -38,23 +38,22 @@ public class SecurityConfig {
 	// 2. DEFINICIÓN DETALLADA DE CORS
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
+	    CorsConfiguration configuration = new CorsConfiguration();
 
-		// Permitir el origen de tu Frontend Angular
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+	    // 1. AGREGA AQUÍ TUS URLS DE VERCEL
+	    configuration.setAllowedOrigins(Arrays.asList(
+	        "http://localhost:4200",
+	        "https://veoptics-pisips-front-jeriq35cu-carlosduti70s-projects.vercel.app",
+	        "https://veoptics-pisips-front.vercel.app"
+	    ));
 
-		// Permitir los métodos HTTP necesarios
-		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+	    // 2. Mantenemos el resto igual
+	    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+	    configuration.setAllowedHeaders(Arrays.asList("*"));
+	    configuration.setAllowCredentials(true);
 
-		// Permitir todas las cabeceras (Authorization, Content-Type, etc.)
-		configuration.setAllowedHeaders(Arrays.asList("*"));
-
-		// Permitir credenciales (cookies, auth headers)
-		configuration.setAllowCredentials(true);
-
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		// Aplicar esta configuración a TODAS las rutas (/**)
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
+	    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    source.registerCorsConfiguration("/**", configuration);
+	    return source;
 	}
 }

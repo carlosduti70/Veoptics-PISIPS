@@ -3,7 +3,6 @@ package com.uisrael.veoptics.presentacion.controladores;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +19,6 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/historia")
-@CrossOrigin(origins = "https://veoptics-pisips-front-jeriq35cu-carlosduti70s-projects.vercel.app")
 public class HistoriaControlador {
 	
 	
