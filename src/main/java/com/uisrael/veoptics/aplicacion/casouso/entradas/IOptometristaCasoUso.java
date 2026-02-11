@@ -10,8 +10,12 @@ public interface IOptometristaCasoUso {
 	
 	Optometrista obtenerPorId(int id);
 	
+	Optometrista obtenerPorIdUsurio(int idUsuario);
+	
 	List<Optometrista>listar ();
 	
 	void eliminar(int id);
+	
+	Optometrista actualizarDatos(Optometrista optometrista);
 
 }

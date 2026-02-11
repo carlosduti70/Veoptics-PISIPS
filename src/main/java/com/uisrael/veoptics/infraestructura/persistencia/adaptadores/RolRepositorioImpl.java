@@ -30,7 +30,7 @@ public class RolRepositorioImpl implements IRolRepositorio {
 	}
 
 	@Override
-	public Optional<Rol> buscarPorId(int id) {
+	public Optional<Rol> buscarRolPorId(int id) {
 		
 		return jpaRolRepositorio.findById(id).map(entityRolMapper::toDomain);
 	}

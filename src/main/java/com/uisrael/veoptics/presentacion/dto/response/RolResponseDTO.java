@@ -6,7 +6,6 @@ public class RolResponseDTO {
 
 	private int id_rol;
 	private  String nombreRol;
-	private  char estado;
 	
 	
 	public int getIdRol() {
@@ -21,12 +20,5 @@ public class RolResponseDTO {
 	public void setNombreRol(String nombreRol) {
 		this.nombreRol = nombreRol;
 	}
-	public char getEstado() {
-		return estado;
-	}
-	public void setEstado(char estado) {
-		this.estado = estado;
-	}
-	
 	
 }

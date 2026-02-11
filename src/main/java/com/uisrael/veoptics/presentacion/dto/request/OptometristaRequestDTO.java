@@ -8,16 +8,12 @@ public class OptometristaRequestDTO {
 //	private int idOptometrista;
 
 	@NotBlank
-	private String nombre;
-	@NotBlank
-	private String apellido;
-	@NotBlank
-	private String ci;
-	@NotBlank
 	private String registroProfesional;
 	@NotBlank
 	private String telefono;
 	@NotBlank
 	private char estado;
+	@NotBlank
+    private Integer idUsuario;
 
 }

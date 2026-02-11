@@ -3,48 +3,111 @@ package com.uisrael.veoptics.aplicacion.casouso.impl;
 import java.util.List;
 
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IUsuarioCasoUso;
+import com.uisrael.veoptics.dominio.entidades.Rol;
 import com.uisrael.veoptics.dominio.entidades.Usuario;
+import com.uisrael.veoptics.dominio.repositorios.IPasswordEncoderPort;
+import com.uisrael.veoptics.dominio.repositorios.IRolRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IUsuarioRepositorio;
 
-public class UsuarioCasoUsoImpl implements IUsuarioCasoUso{
-	
-	
-	private final IUsuarioRepositorio repositorio;
-	
-	
-	public UsuarioCasoUsoImpl(IUsuarioRepositorio repositorio) {
-		
-		this.repositorio = repositorio;
-	}
+public class UsuarioCasoUsoImpl implements IUsuarioCasoUso {
 
+	private final IUsuarioRepositorio repositorio;
+	private final IRolRepositorio rolRepositorio;
+	private final IPasswordEncoderPort passwordEncoder;
+
+	public UsuarioCasoUsoImpl(IUsuarioRepositorio repositorio, IRolRepositorio rolRepositorio,
+			IPasswordEncoderPort passwordEncoder) {
+		this.repositorio = repositorio;
+		this.rolRepositorio = rolRepositorio;
+		this.passwordEncoder = passwordEncoder;
+	}
 
 	@Override
-	public Usuario crear(Usuario usuario) {
-	
-		return repositorio.guardar(usuario);
-	}
+	public Usuario crear(Usuario usuarioDesdeWeb) {
+		System.out.println("ID recibido del DTO: " + usuarioDesdeWeb.getRol().getIdRol());
 
+		if (repositorio.existePorCedula(usuarioDesdeWeb.getCedula())) {
+			throw new RuntimeException("La cédula ya se encuentra registrada");
+		}
+
+		if (repositorio.existePorCorreo(usuarioDesdeWeb.getCorreo())) {
+			throw new RuntimeException("El correo electrónico ya está en uso");
+		}
+
+		Rol rolValidado = rolRepositorio.buscarRolPorId(usuarioDesdeWeb.getRol().getIdRol())
+				.orElseThrow(() -> new RuntimeException("El rol especificado no existe"));
+
+		String claveEncriptada = passwordEncoder.encode(usuarioDesdeWeb.getClave());
+
+		Usuario usuarioParaPersistir = new Usuario(usuarioDesdeWeb.getIdUsuario(), usuarioDesdeWeb.getNombre(),
+				usuarioDesdeWeb.getApellido(), usuarioDesdeWeb.getCedula(), usuarioDesdeWeb.getCorreo(),
+				claveEncriptada, usuarioDesdeWeb.getEstado(), "N", rolValidado);
+
+		return repositorio.guardar(usuarioParaPersistir);
+	}
 
 	@Override
 	public Usuario obtenerPorId(int id) {
-		
-		return repositorio.buscarPorId(id).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
-	}
 
+		return repositorio.buscarPorId(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+	}
 
 	@Override
 	public List<Usuario> listar() {
-		
 		return repositorio.listarTodos();
 	}
-
 
 	@Override
 	public void eliminar(int id) {
 		repositorio.eliminar(id);
-		
+
 	}
 
+	@Override
+	public Usuario login(String correo, String clave) {
+		Usuario usuarioEncontrado = repositorio.findByCorreo(correo)
+				.orElseThrow(() -> new RuntimeException("Usuario incorrecto"));
 
+		if (!passwordEncoder.matches(clave, usuarioEncontrado.getClave())) {
+			throw new RuntimeException("Contraseña incorrecta");
+		}
+
+		return usuarioEncontrado;
+	}
+
+	@Override
+	public void actualizarClave(int idUsuario, String nuevaClave) {
+		if (repositorio.buscarPorId(idUsuario).isEmpty()) {
+			throw new RuntimeException("Usuario no encontrado");
+		}
+
+		String nuevaClaveEncriptada = passwordEncoder.encode(nuevaClave);
+
+		repositorio.actualizarClave(idUsuario, nuevaClaveEncriptada);
+	}
+
+	@Override
+	public Usuario actualizarInformacion(Usuario usuarioWeb) {
+		if (repositorio.buscarPorId(usuarioWeb.getIdUsuario()).isEmpty()) {
+			throw new RuntimeException("Usuario no encontrado");
+		}
+
+		if (repositorio.existePorCedulaYNoId(usuarioWeb.getCedula(), usuarioWeb.getIdUsuario())) {
+			throw new RuntimeException("La cédula ya está registrada por otro usuario");
+		}
+
+		if (repositorio.existePorCorreoYNoId(usuarioWeb.getCorreo(), usuarioWeb.getIdUsuario())) {
+			throw new RuntimeException("El correo ya está registrado por otro usuario");
+		}
+
+		Rol rolValidado = rolRepositorio.buscarRolPorId(usuarioWeb.getRol().getIdRol())
+				.orElseThrow(() -> new RuntimeException("Rol no válido"));
+
+		Usuario usuarioParaActualizar = new Usuario(usuarioWeb.getIdUsuario(), usuarioWeb.getNombre(),
+				usuarioWeb.getApellido(), usuarioWeb.getCedula(), usuarioWeb.getCorreo(), null, usuarioWeb.getEstado(),
+				null, rolValidado);
+
+		return repositorio.actualizar(usuarioParaActualizar);
+	}
 
 }

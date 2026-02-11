@@ -11,9 +11,7 @@ public class PacienteResponseDTO {
 	private String direccion;
 	private String telefono;
 	private String correo;
-	private String motivoConsulta;
 	private LocalDate fecRegistro;
-	private LocalDate fecPrimero;
 	private String nombre;
 	private char estado;
 
@@ -73,28 +71,12 @@ public class PacienteResponseDTO {
 		this.correo = correo;
 	}
 
-	public String getMotivoConsulta() {
-		return motivoConsulta;
-	}
-
-	public void setMotivoConsulta(String motivoConsulta) {
-		this.motivoConsulta = motivoConsulta;
-	}
-
 	public LocalDate getFecRegistro() {
 		return fecRegistro;
 	}
 
 	public void setFecRegistro(LocalDate fecRegistro) {
 		this.fecRegistro = fecRegistro;
-	}
-
-	public LocalDate getFecPrimero() {
-		return fecPrimero;
-	}
-
-	public void setFecPrimero(LocalDate fecPrimero) {
-		this.fecPrimero = fecPrimero;
 	}
 
 	public String getNombre() {

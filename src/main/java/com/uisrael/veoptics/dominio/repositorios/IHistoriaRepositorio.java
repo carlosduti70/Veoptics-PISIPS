@@ -10,6 +10,8 @@ public interface IHistoriaRepositorio {
 	Historia guardar(Historia historia);
 
 	Optional<Historia> buscarPorId(int id);
+	
+	Optional<Historia> buscarPorIdExamen(int idExamen);
 
 	List<Historia> listarTodos();
 

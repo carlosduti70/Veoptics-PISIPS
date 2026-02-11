@@ -3,41 +3,42 @@ package com.uisrael.veoptics.dominio.entidades;
 import java.time.LocalDate;
 
 public final class Certificado {
-	
-	
-	
-	public Certificado(int id_certificado, LocalDate tbl_fecha_emision, String tbl_informacion_certificado,
-			String tbl_ruta_pdf) {
+
+	private final int idCertificado;
+	private final LocalDate fechaEmision;
+	private final String informacionCertificado;
+	private final String rutaPdf;
+	// El certificado "contiene" un examen
+	private final ExamenOptometrico examen;
+
+	public Certificado(int idCertificado, LocalDate fechaEmision, String informacionCertificado, String rutaPdf,
+			ExamenOptometrico examen) {
 		super();
-		this.id_certificado = id_certificado;
-		this.tbl_fecha_emision = tbl_fecha_emision;
-		this.tbl_informacion_certificado = tbl_informacion_certificado;
-		this.tbl_ruta_pdf = tbl_ruta_pdf;
+		this.idCertificado = idCertificado;
+		this.fechaEmision = fechaEmision;
+		this.informacionCertificado = informacionCertificado;
+		this.rutaPdf = rutaPdf;
+		this.examen = examen;
 	}
-	
-	private final int id_certificado;
-	private final LocalDate tbl_fecha_emision;
-	private final String tbl_informacion_certificado;
-	private final String tbl_ruta_pdf;
-	public int getId_certificado() {
-		return id_certificado;
+
+	public int getIdCertificado() {
+		return idCertificado;
 	}
-	public LocalDate getTbl_fecha_emision() {
-		return tbl_fecha_emision;
+
+	public LocalDate getFechaEmision() {
+		return fechaEmision;
 	}
-	public String getTbl_informacion_certificado() {
-		return tbl_informacion_certificado;
+
+	public String getInformacionCertificado() {
+		return informacionCertificado;
 	}
-	public String getTbl_ruta_pdf() {
-		return tbl_ruta_pdf;
+
+	public String getRutaPdf() {
+		return rutaPdf;
 	}
-	@Override
-	public String toString() {
-		return "Certificado [id_certificado=" + id_certificado + ", tbl_fecha_emision=" + tbl_fecha_emision
-				+ ", tbl_informacion_certificado=" + tbl_informacion_certificado + ", tbl_ruta_pdf=" + tbl_ruta_pdf
-				+ "]";
+
+	public ExamenOptometrico getExamen() {
+		return examen;
 	}
-	
-	
-	
+
 }

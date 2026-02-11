@@ -5,10 +5,9 @@ import lombok.Data;
 
 @Data
 public class RolRequestDTO {
+	
 	//private final int idRol;
 	
 	@NotBlank
 	private  String nombreRol;
-	@NotBlank
-	private  char estado;
 }

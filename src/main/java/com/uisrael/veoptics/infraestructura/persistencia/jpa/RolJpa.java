@@ -15,18 +15,18 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "sv_rol")
-public class RolJpa implements Serializable{
+public class RolJpa implements Serializable {
 
-		private static final long serialVersionUID = 1L;
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY )
-		private int id_rol;
-		@Column(length = 200)
-		private String nombre_rol;
-		
-		// Relación: Un Rol puede tener muchos Usuarios
-	    @OneToMany(mappedBy = "fkRol")
-	    private List<UsuarioJpa> usuarios;
-		
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idRol;
+
+	@Column(length = 200)
+	private String nombreRol;
+
+	@OneToMany(mappedBy = "rol")
+	private List<UsuarioJpa> usuarios;
+
 }

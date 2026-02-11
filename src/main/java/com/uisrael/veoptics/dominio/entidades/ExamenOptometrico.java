@@ -1,96 +1,173 @@
 package com.uisrael.veoptics.dominio.entidades;
 
-import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 
 public class ExamenOptometrico {
-		private final int idexamen;
-		private final LocalDate fecha;
-		private final String esfera_od;
-		private final String cilindro_od;
-		private final String eje_od;
-		private final String esfera_oi;
-		private final String cilindro_oi;
-		private final String eje_oi;
-		private final String adicion_od;
-		private final String adicion_oi;
-		private final String agudeza_visual_cerca_oi;
-		private final String agudeza_visual_lejos_oi;
-		private final String agudeza_visual_lejos_od;
-		private final String agudeza_visual_cerca_od;
-		private final String altura_oi;
-		private final String altura_od;
-		public ExamenOptometrico(int idexamen, LocalDate fecha, String esfera_od, String cilindro_od, String eje_od,
-				String esfera_oi, String cilindro_oi, String eje_oi, String adicion_od, String adicion_oi,
-				String agudeza_visual_cerca_oi, String agudeza_visual_lejos_oi, String agudeza_visual_lejos_od,
-				String agudeza_visual_cerca_od, String altura_oi, String altura_od) {
-		
-			this.idexamen = idexamen;
-			this.fecha = fecha;
-			this.esfera_od = esfera_od;
-			this.cilindro_od = cilindro_od;
-			this.eje_od = eje_od;
-			this.esfera_oi = esfera_oi;
-			this.cilindro_oi = cilindro_oi;
-			this.eje_oi = eje_oi;
-			this.adicion_od = adicion_od;
-			this.adicion_oi = adicion_oi;
-			this.agudeza_visual_cerca_oi = agudeza_visual_cerca_oi;
-			this.agudeza_visual_lejos_oi = agudeza_visual_lejos_oi;
-			this.agudeza_visual_lejos_od = agudeza_visual_lejos_od;
-			this.agudeza_visual_cerca_od = agudeza_visual_cerca_od;
-			this.altura_oi = altura_oi;
-			this.altura_od = altura_od;
-		}
-		public int getIdexamen() {
-			return idexamen;
-		}
-		public LocalDate getFecha() {
-			return fecha;
-		}
-		public String getEsfera_od() {
-			return esfera_od;
-		}
-		public String getCilindro_od() {
-			return cilindro_od;
-		}
-		public String getEje_od() {
-			return eje_od;
-		}
-		public String getEsfera_oi() {
-			return esfera_oi;
-		}
-		public String getCilindro_oi() {
-			return cilindro_oi;
-		}
-		public String getEje_oi() {
-			return eje_oi;
-		}
-		public String getAdicion_od() {
-			return adicion_od;
-		}
-		public String getAdicion_oi() {
-			return adicion_oi;
-		}
-		public String getAgudeza_visual_cerca_oi() {
-			return agudeza_visual_cerca_oi;
-		}
-		public String getAgudeza_visual_lejos_oi() {
-			return agudeza_visual_lejos_oi;
-		}
-		public String getAgudeza_visual_lejos_od() {
-			return agudeza_visual_lejos_od;
-		}
-		public String getAgudeza_visual_cerca_od() {
-			return agudeza_visual_cerca_od;
-		}
-		public String getAltura_oi() {
-			return altura_oi;
-		}
-		public String getAltura_od() {
-			return altura_od;
-		}
-	
-		
-		
+	private final int idExamen;
+	private final LocalDateTime fecha;
+
+	// Ojo Derecho (OD)
+	private final String esferaOd;
+	private final String cilindroOd;
+	private final String ejeOd;
+	private final String adicionOd;
+	private final String agudezaVisualLejosOd;
+	private final String agudezaVisualCercaOd;
+	private final String dnpOd;
+	private final String alturaOd;
+
+	// Ojo Izquierdo (OI)
+	private final String esferaOi;
+	private final String cilindroOi;
+	private final String ejeOi;
+	private final String adicionOi;
+	private final String agudezaVisualLejosOi;
+	private final String agudezaVisualCercaOi;
+	private final String dnpOi;
+	private final String alturaOi;
+
+	private final String diagnostico;
+	private final String visionCercana;
+	private final String visionLejana;
+	private final String percepcionColores;
+	private final String coloresVisibles;
+
+	// RELACIONES
+	private final Paciente paciente;
+	private final Optometrista optometrista;
+
+	public ExamenOptometrico(int idExamen, LocalDateTime fecha, String esferaOd, String cilindroOd, String ejeOd,
+			String adicionOd, String agudezaVisualLejosOd, String agudezaVisualCercaOd, String dnpOd, String alturaOd,
+			String esferaOi, String cilindroOi, String ejeOi, String adicionOi, String agudezaVisualLejosOi,
+			String agudezaVisualCercaOi, String dnpOi, String alturaOi, String diagnostico, String visionCercana,
+			String visionLejana, String percepcionColores, String coloresVisibles, Paciente paciente,
+			Optometrista optometrista) {
+		super();
+		this.idExamen = idExamen;
+		this.fecha = fecha;
+		this.esferaOd = esferaOd;
+		this.cilindroOd = cilindroOd;
+		this.ejeOd = ejeOd;
+		this.adicionOd = adicionOd;
+		this.agudezaVisualLejosOd = agudezaVisualLejosOd;
+		this.agudezaVisualCercaOd = agudezaVisualCercaOd;
+		this.dnpOd = dnpOd;
+		this.alturaOd = alturaOd;
+		this.esferaOi = esferaOi;
+		this.cilindroOi = cilindroOi;
+		this.ejeOi = ejeOi;
+		this.adicionOi = adicionOi;
+		this.agudezaVisualLejosOi = agudezaVisualLejosOi;
+		this.agudezaVisualCercaOi = agudezaVisualCercaOi;
+		this.dnpOi = dnpOi;
+		this.alturaOi = alturaOi;
+		this.diagnostico = diagnostico;
+		this.visionCercana = visionCercana;
+		this.visionLejana = visionLejana;
+		this.percepcionColores = percepcionColores;
+		this.coloresVisibles = coloresVisibles;
+		this.paciente = paciente;
+		this.optometrista = optometrista;
+	}
+
+	public int getIdExamen() {
+		return idExamen;
+	}
+
+	public LocalDateTime getFecha() {
+		return fecha;
+	}
+
+	public String getEsferaOd() {
+		return esferaOd;
+	}
+
+	public String getCilindroOd() {
+		return cilindroOd;
+	}
+
+	public String getEjeOd() {
+		return ejeOd;
+	}
+
+	public String getAdicionOd() {
+		return adicionOd;
+	}
+
+	public String getAgudezaVisualLejosOd() {
+		return agudezaVisualLejosOd;
+	}
+
+	public String getAgudezaVisualCercaOd() {
+		return agudezaVisualCercaOd;
+	}
+
+	public String getDnpOd() {
+		return dnpOd;
+	}
+
+	public String getAlturaOd() {
+		return alturaOd;
+	}
+
+	public String getEsferaOi() {
+		return esferaOi;
+	}
+
+	public String getCilindroOi() {
+		return cilindroOi;
+	}
+
+	public String getEjeOi() {
+		return ejeOi;
+	}
+
+	public String getAdicionOi() {
+		return adicionOi;
+	}
+
+	public String getAgudezaVisualLejosOi() {
+		return agudezaVisualLejosOi;
+	}
+
+	public String getAgudezaVisualCercaOi() {
+		return agudezaVisualCercaOi;
+	}
+
+	public String getDnpOi() {
+		return dnpOi;
+	}
+
+	public String getAlturaOi() {
+		return alturaOi;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public String getVisionCercana() {
+		return visionCercana;
+	}
+
+	public String getVisionLejana() {
+		return visionLejana;
+	}
+
+	public String getPercepcionColores() {
+		return percepcionColores;
+	}
+
+	public String getColoresVisibles() {
+		return coloresVisibles;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public Optometrista getOptometrista() {
+		return optometrista;
+	}
+
 }

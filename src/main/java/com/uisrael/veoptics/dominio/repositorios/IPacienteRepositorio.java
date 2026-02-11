@@ -15,4 +15,17 @@ public interface IPacienteRepositorio {
 
 	void eliminar(int id);
 
+	boolean existePorCi(String ci);
+
+	boolean existePorCorreo(String correo);
+
+	boolean existePorTelefono(String telefono);
+
+	boolean existePorCiYNoId(String ci, int idPaciente);
+
+	boolean existePorCorreoYNoId(String correo, int idPaciente);
+
+	boolean existePorTelefonoYNoId(String telefono, int idPaciente);
+
+	Paciente actualizar(Paciente paciente);
 }

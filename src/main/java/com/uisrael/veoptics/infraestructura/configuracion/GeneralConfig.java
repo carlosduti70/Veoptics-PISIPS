@@ -22,6 +22,7 @@ import com.uisrael.veoptics.dominio.repositorios.IExamenOptometricoRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IHistoriaRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IOptometristaRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IPacienteRepositorio;
+import com.uisrael.veoptics.dominio.repositorios.IPasswordEncoderPort;
 import com.uisrael.veoptics.dominio.repositorios.IRolRepositorio;
 import com.uisrael.veoptics.dominio.repositorios.IUsuarioRepositorio;
 import com.uisrael.veoptics.infraestructura.persistencia.adaptadores.CertificadoRepositorioImpl;
@@ -46,7 +47,6 @@ import com.uisrael.veoptics.infraestructura.repositorios.IPacienteJpaRepositorio
 import com.uisrael.veoptics.infraestructura.repositorios.IRolJpaRepositorio;
 import com.uisrael.veoptics.infraestructura.repositorios.IUsuarioJpaRepositorio;
 
-
 @Configuration
 public class GeneralConfig {
 
@@ -59,17 +59,19 @@ public class GeneralConfig {
 	IPacienteCasoUso pacienteCasoUso(IPacienteRepositorio repositorio) {
 		return new PacienteCasoUsoImpl(repositorio);
 	};
-	
+
 	@Bean
-	IOptometristaRepositorio optometristaRepositorio(IOptometristaJpaRepositorio jpaRepositorio, IOptometristaJpaMapper mapper) {
+	IOptometristaRepositorio optometristaRepositorio(IOptometristaJpaRepositorio jpaRepositorio,
+			IOptometristaJpaMapper mapper) {
 		return new OptometristaRepositorioImpl(jpaRepositorio, mapper);
 	};
 
 	@Bean
-	IOptometristaCasoUso optometristaCasoUso(IOptometristaRepositorio repositorio) {
-		return new OptometristaCasoUsoImpl(repositorio);
+	IOptometristaCasoUso optometristaCasoUso(IOptometristaRepositorio repositorio,
+			IUsuarioRepositorio usuarioRepositorio) {
+		return new OptometristaCasoUsoImpl(repositorio, usuarioRepositorio);
 	};
-	
+
 	@Bean
 
 	IUsuarioRepositorio usuarioRepositorio(IUsuarioJpaRepositorio jpaRepositorio, IUsuarioJpaMapper mapper) {
@@ -77,51 +79,56 @@ public class GeneralConfig {
 	};
 
 	@Bean
-	IUsuarioCasoUso usuarioCasoUso(IUsuarioRepositorio repositorio) {
-		return new UsuarioCasoUsoImpl(repositorio);
+	IUsuarioCasoUso usuarioCasoUso(IUsuarioRepositorio repositorio, IRolRepositorio rolRepositorio, IPasswordEncoderPort passwordEncoder) {
+		return new UsuarioCasoUsoImpl(repositorio, rolRepositorio, passwordEncoder);
 	};
-	
+
 	@Bean
 	IRolRepositorio rolRepositorio(IRolJpaRepositorio jpaRepositorio, IRolJpaMapper mapper) {
 		return new RolRepositorioImpl(jpaRepositorio, mapper);
-		
+
 	};
-	
+
 	@Bean
 	IRolCasoUso rolCasoUso(IRolRepositorio repositorio) {
 		return new RolCasoUsoImpl(repositorio);
 	};
-	
+
 	@Bean
 	IHistoriaRepositorio historiaRepositorio(IHistoriaJpaRepositorio jpaRepositorio, IHistoriaJpaMapper mapper) {
 		return new HistoriaRepositorioImpl(jpaRepositorio, mapper);
-		
+
 	};
-	
+
 	@Bean
-	IHistoriaCasoUso historiaCasoUso(IHistoriaRepositorio repositorio) {
-		return new HistoriaCasoUsoImpl(repositorio);
+	IHistoriaCasoUso historiaCasoUso(IHistoriaRepositorio repositorio, IPacienteRepositorio pacienteRepositorio,
+			IExamenOptometricoRepositorio examenRepositorio, IOptometristaRepositorio optometristaRepositorio) {
+		return new HistoriaCasoUsoImpl(repositorio, pacienteRepositorio, optometristaRepositorio, examenRepositorio);
 	};
-	
+
 	@Bean
-	ICertificadoRepositorio certificadoRepositorio(ICertificadoJpaRepositorio jpaRepositorio, ICertificadoJpaMapper mapper) {
+	ICertificadoRepositorio certificadoRepositorio(ICertificadoJpaRepositorio jpaRepositorio,
+			ICertificadoJpaMapper mapper) {
 		return new CertificadoRepositorioImpl(jpaRepositorio, mapper);
-		
+
 	};
-	
+
 	@Bean
 	ICertificadoCasoUso certificadoCasoUso(ICertificadoRepositorio repositorio) {
 		return new CertificadoCasoUsoImpl(repositorio);
 	};
+
 	@Bean
-	IExamenOptometricoRepositorio examenoptometricoRepositorio(IExamenOptometricoJpaRepositorio jpaRepositorio, IExamenOptometricoJpaMapper mapper) {
+	IExamenOptometricoRepositorio examenoptometricoRepositorio(IExamenOptometricoJpaRepositorio jpaRepositorio,
+			IExamenOptometricoJpaMapper mapper) {
 		return new ExamenOptometricoRepositorioImpl(jpaRepositorio, mapper);
-		
+
 	};
-	
+
 	@Bean
-	IExamenOptometricoCasoUso examenoptometricoCasoUso(IExamenOptometricoRepositorio repositorio) {
-		return new ExamenOptometricoCasoUsoImpl(repositorio);
+	IExamenOptometricoCasoUso examenoptometricoCasoUso(IExamenOptometricoRepositorio repositorio,
+			IPacienteRepositorio pacienteRepositorio, IOptometristaRepositorio optometristaRepositorio) {
+		return new ExamenOptometricoCasoUsoImpl(repositorio, pacienteRepositorio, optometristaRepositorio);
 	};
 
 }

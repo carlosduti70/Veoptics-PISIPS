@@ -1,5 +1,6 @@
 package com.uisrael.veoptics.presentacion.dto.request;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 
@@ -20,6 +21,9 @@ public class UsuarioRequestDTO {
 	private  String clave;
 	@NotBlank
 	private  Boolean estado;
+	
+	@NotNull(message = "El ID del rol es obligatorio")
+    private int idRol;
 	
 
 }

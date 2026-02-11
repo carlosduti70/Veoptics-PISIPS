@@ -1,123 +1,234 @@
 package com.uisrael.veoptics.presentacion.dto.response;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ExamenOptometricoResponseDTO {
+
+	private int idExamen;
+	private LocalDateTime fecha;
+	private String esferaOd;
+	private String cilindroOd;
+	private String ejeOd;
+	private String adicionOd;
+	private String agudezaVisualLejosOd;
+	private String agudezaVisualCercaOd;
+	private String dnpOd;
+	private String alturaOd;
+	private String esferaOi;
+	private String cilindroOi;
+	private String ejeOi;
+	private String adicionOi;
+	private String agudezaVisualLejosOi;
+	private String agudezaVisualCercaOi;
+	private String dnpOi;
+	private String alturaOi;
+	private String diagnostico;
+	private String visionCercana;
+	private String visionLejana;
+	private String percepcionColores;
+	private String coloresVisibles;
 	
-	private  int idexamen;
-	private  LocalDate fecha;
-	private  String esfera_od;
-	private  String cilindro_od;
-	private  String eje_od;
-	private  String esfera_oi;
-	private  String cilindro_oi;
-	private  String eje_oi;
-	private  String adicion_od;
-	private  String adicion_oi;
-	private  String agudeza_visual_cerca_oi;
-	private  String agudeza_visual_lejos_oi;
-	private  String agudeza_visual_lejos_od;
-	private  String agudeza_visual_cerca_od;
-	private  String altura_oi;
-	private  String altura_od;
-	public int getIdexamen() {
-		return idexamen;
+	private int idPaciente;
+	private int idOptometrista;
+
+	public int getIdExamen() {
+		return idExamen;
 	}
-	public void setIdexamen(int idexamen) {
-		this.idexamen = idexamen;
+
+	public void setIdExamen(int idExamen) {
+		this.idExamen = idExamen;
 	}
-	public LocalDate getFecha() {
+
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
-	public void setFecha(LocalDate fecha) {
+
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
-	public String getEsfera_od() {
-		return esfera_od;
+
+	public String getEsferaOd() {
+		return esferaOd;
 	}
-	public void setEsfera_od(String esfera_od) {
-		this.esfera_od = esfera_od;
+
+	public void setEsferaOd(String esferaOd) {
+		this.esferaOd = esferaOd;
 	}
-	public String getCilindro_od() {
-		return cilindro_od;
+
+	public String getCilindroOd() {
+		return cilindroOd;
 	}
-	public void setCilindro_od(String cilindro_od) {
-		this.cilindro_od = cilindro_od;
+
+	public void setCilindroOd(String cilindroOd) {
+		this.cilindroOd = cilindroOd;
 	}
-	public String getEje_od() {
-		return eje_od;
+
+	public String getEjeOd() {
+		return ejeOd;
 	}
-	public void setEje_od(String eje_od) {
-		this.eje_od = eje_od;
+
+	public void setEjeOd(String ejeOd) {
+		this.ejeOd = ejeOd;
 	}
-	public String getEsfera_oi() {
-		return esfera_oi;
+
+	public String getAdicionOd() {
+		return adicionOd;
 	}
-	public void setEsfera_oi(String esfera_oi) {
-		this.esfera_oi = esfera_oi;
+
+	public void setAdicionOd(String adicionOd) {
+		this.adicionOd = adicionOd;
 	}
-	public String getCilindro_oi() {
-		return cilindro_oi;
+
+	public String getAgudezaVisualLejosOd() {
+		return agudezaVisualLejosOd;
 	}
-	public void setCilindro_oi(String cilindro_oi) {
-		this.cilindro_oi = cilindro_oi;
+
+	public void setAgudezaVisualLejosOd(String agudezaVisualLejosOd) {
+		this.agudezaVisualLejosOd = agudezaVisualLejosOd;
 	}
-	public String getEje_oi() {
-		return eje_oi;
+
+	public String getAgudezaVisualCercaOd() {
+		return agudezaVisualCercaOd;
 	}
-	public void setEje_oi(String eje_oi) {
-		this.eje_oi = eje_oi;
+
+	public void setAgudezaVisualCercaOd(String agudezaVisualCercaOd) {
+		this.agudezaVisualCercaOd = agudezaVisualCercaOd;
 	}
-	public String getAdicion_od() {
-		return adicion_od;
+
+	public String getDnpOd() {
+		return dnpOd;
 	}
-	public void setAdicion_od(String adicion_od) {
-		this.adicion_od = adicion_od;
+
+	public void setDnpOd(String dnpOd) {
+		this.dnpOd = dnpOd;
 	}
-	public String getAdicion_oi() {
-		return adicion_oi;
+
+	public String getAlturaOd() {
+		return alturaOd;
 	}
-	public void setAdicion_oi(String adicion_oi) {
-		this.adicion_oi = adicion_oi;
+
+	public void setAlturaOd(String alturaOd) {
+		this.alturaOd = alturaOd;
 	}
-	public String getAgudeza_visual_cerca_oi() {
-		return agudeza_visual_cerca_oi;
+
+	public String getEsferaOi() {
+		return esferaOi;
 	}
-	public void setAgudeza_visual_cerca_oi(String agudeza_visual_cerca_oi) {
-		this.agudeza_visual_cerca_oi = agudeza_visual_cerca_oi;
+
+	public void setEsferaOi(String esferaOi) {
+		this.esferaOi = esferaOi;
 	}
-	public String getAgudeza_visual_lejos_oi() {
-		return agudeza_visual_lejos_oi;
+
+	public String getCilindroOi() {
+		return cilindroOi;
 	}
-	public void setAgudeza_visual_lejos_oi(String agudeza_visual_lejos_oi) {
-		this.agudeza_visual_lejos_oi = agudeza_visual_lejos_oi;
+
+	public void setCilindroOi(String cilindroOi) {
+		this.cilindroOi = cilindroOi;
 	}
-	public String getAgudeza_visual_lejos_od() {
-		return agudeza_visual_lejos_od;
+
+	public String getEjeOi() {
+		return ejeOi;
 	}
-	public void setAgudeza_visual_lejos_od(String agudeza_visual_lejos_od) {
-		this.agudeza_visual_lejos_od = agudeza_visual_lejos_od;
+
+	public void setEjeOi(String ejeOi) {
+		this.ejeOi = ejeOi;
 	}
-	public String getAgudeza_visual_cerca_od() {
-		return agudeza_visual_cerca_od;
+
+	public String getAdicionOi() {
+		return adicionOi;
 	}
-	public void setAgudeza_visual_cerca_od(String agudeza_visual_cerca_od) {
-		this.agudeza_visual_cerca_od = agudeza_visual_cerca_od;
+
+	public void setAdicionOi(String adicionOi) {
+		this.adicionOi = adicionOi;
 	}
-	public String getAltura_oi() {
-		return altura_oi;
+
+	public String getAgudezaVisualLejosOi() {
+		return agudezaVisualLejosOi;
 	}
-	public void setAltura_oi(String altura_oi) {
-		this.altura_oi = altura_oi;
+
+	public void setAgudezaVisualLejosOi(String agudezaVisualLejosOi) {
+		this.agudezaVisualLejosOi = agudezaVisualLejosOi;
 	}
-	public String getAltura_od() {
-		return altura_od;
+
+	public String getAgudezaVisualCercaOi() {
+		return agudezaVisualCercaOi;
 	}
-	public void setAltura_od(String altura_od) {
-		this.altura_od = altura_od;
+
+	public void setAgudezaVisualCercaOi(String agudezaVisualCercaOi) {
+		this.agudezaVisualCercaOi = agudezaVisualCercaOi;
 	}
-	
-	
-	
+
+	public String getDnpOi() {
+		return dnpOi;
+	}
+
+	public void setDnpOi(String dnpOi) {
+		this.dnpOi = dnpOi;
+	}
+
+	public String getAlturaOi() {
+		return alturaOi;
+	}
+
+	public void setAlturaOi(String alturaOi) {
+		this.alturaOi = alturaOi;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public String getVisionCercana() {
+		return visionCercana;
+	}
+
+	public void setVisionCercana(String visionCercana) {
+		this.visionCercana = visionCercana;
+	}
+
+	public String getVisionLejana() {
+		return visionLejana;
+	}
+
+	public void setVisionLejana(String visionLejana) {
+		this.visionLejana = visionLejana;
+	}
+
+	public String getPercepcionColores() {
+		return percepcionColores;
+	}
+
+	public void setPercepcionColores(String percepcionColores) {
+		this.percepcionColores = percepcionColores;
+	}
+
+	public String getColoresVisibles() {
+		return coloresVisibles;
+	}
+
+	public void setColoresVisibles(String coloresVisibles) {
+		this.coloresVisibles = coloresVisibles;
+	}
+
+	public int getIdPaciente() {
+		return idPaciente;
+	}
+
+	public void setIdPaciente(int idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+
+	public int getIdOptometrista() {
+		return idOptometrista;
+	}
+
+	public void setIdOptometrista(int idOptometrista) {
+		this.idOptometrista = idOptometrista;
+	}
 
 }

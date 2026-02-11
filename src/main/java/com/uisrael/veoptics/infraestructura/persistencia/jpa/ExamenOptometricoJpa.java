@@ -1,8 +1,7 @@
 package com.uisrael.veoptics.infraestructura.persistencia.jpa;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,48 +9,58 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "sv_examen_optometrico")
-public class ExamenOptometricoJpa implements Serializable{
+public class ExamenOptometricoJpa implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idExamen;
 
-	private int idexamen;
-	private LocalDate fecha;
-	private String esfera_od;
-	private String cilindro_od;
-	private String eje_od;
-	private String esfera_oi;
-	private String cilindro_oi;
-	private String eje_oi;
-	private String adicion_od;
-	private String adicion_oi;
-	private String agudeza_visual_cerca_oi;
-	private String agudeza_visual_lejos_oi;
-	private String agudeza_visual_lejos_od;
-	private String agudeza_visual_cerca_od;
-	private String altura_oi;
-	private String altura_od;
-	
-	 // Relación: Muchos Examenes optometricos (registros) pertenecen a un paciente
-    @ManyToOne
-    @JoinColumn(name = "fkIdPaciente")
-    private PacienteJpa fkIdPaciente;
-    
-	// Relación: Muchos examen optometrico (registros) se puede generar a un Certificados
+	private LocalDateTime fecha;
+
+	// Ojo Derecho (OD)
+	private String esferaOd;
+	private String cilindroOd;
+	private String ejeOd;
+	private String adicionOd;
+	private String agudezaVisualLejosOd;
+	private String agudezaVisualCercaOd;
+	private String dnpOd;
+	private String alturaOd;
+
+	// Ojo Izquierdo (OI)
+	private String esferaOi;
+	private String cilindroOi;
+	private String ejeOi;
+	private String adicionOi;
+	private String agudezaVisualLejosOi;
+	private String agudezaVisualCercaOi;
+	private String dnpOi;
+	private String alturaOi;
+
+	private String diagnostico;
+	private String visionCercana;
+	private String visionLejana;
+	private String percepcionColores;
+	private String coloresVisibles;
+
 	@ManyToOne
-	@JoinColumn(name = "fkIdCertificado")
-	private CertificadoJpa fkIdCertificado;
-	
-	// Relación: Muchos examen optometrico (registros) se puede generar a un optometrista
+	@JoinColumn(name = "id_paciente_fk")
+	private PacienteJpa paciente;
+
 	@ManyToOne
-	@JoinColumn(name = "fkIdExamen")
-	private OptometristaJpa fkIdExamen;
+	@JoinColumn(name = "id_optometrista_fk")
+	private OptometristaJpa optometrista;
+
+	// Historia
+	@OneToOne(mappedBy = "examenOptometrico")
+	private HistoriaJpa historia;
 
 }

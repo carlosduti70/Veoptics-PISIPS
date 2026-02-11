@@ -1,40 +1,64 @@
 package com.uisrael.veoptics.presentacion.dto.request;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class ExamenOptometricoRequestDTO {
-	
+
 	@NotBlank
-	private LocalDate fecha;
+	private int idExamen;
 	@NotBlank
-	private String esfera_od;
+	private LocalDateTime fecha;
 	@NotBlank
-	private String cilindro_od;
+	private String esferaOd;
 	@NotBlank
-	private String eje_od;
+	private String cilindroOd;
 	@NotBlank
-	private String esfera_oi;
+	private String ejeOd;
 	@NotBlank
-	private String cilindro_oi;
+	private String adicionOd;
 	@NotBlank
-	private String eje_oi;
+	private String agudezaVisualLejosOd;
 	@NotBlank
-	private String adicion_od;
+	private String agudezaVisualCercaOd;
 	@NotBlank
-	private String adicion_oi;
+	private String dnpOd;
 	@NotBlank
-	private String agudeza_visual_cerca_oi;
+	private String alturaOd;
 	@NotBlank
-	private String agudeza_visual_lejos_oi;
+	private String esferaOi;
 	@NotBlank
-	private String agudeza_visual_lejos_od;
+	private String cilindroOi;
 	@NotBlank
-	private String agudeza_visual_cerca_od;
+	private String ejeOi;
 	@NotBlank
-	private String altura_oi;
+	private String adicionOi;
 	@NotBlank
-	private String altura_od;
+	private String agudezaVisualLejosOi;
+	@NotBlank
+	private String agudezaVisualCercaOi;
+	@NotBlank
+	private String dnpOi;
+	@NotBlank
+	private String alturaOi;
+	@NotBlank
+	private String diagnostico;
+	@NotBlank
+	private String visionCercana;
+	@NotBlank
+	private String visionLejana;
+	@NotBlank
+	private String percepcionColores;
+	@NotBlank
+	private String coloresVisibles;
+
+	@NotNull(message = "El ID del paciente es obligatorio")
+	private int idPaciente;
+	@NotNull(message = "El ID del optometrista es obligatorio")
+	private int idOptometrista;
 
 }

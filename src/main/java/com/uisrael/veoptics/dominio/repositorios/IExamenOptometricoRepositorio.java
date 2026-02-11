@@ -10,6 +10,8 @@ public interface IExamenOptometricoRepositorio {
 	ExamenOptometrico guardar(ExamenOptometrico examenoptometrico);
 
 	Optional<ExamenOptometrico> buscarPorId(int id);
+	
+	List<ExamenOptometrico> buscarPorIdPaciente(int idPaciente);
 
 	List<ExamenOptometrico> listarTodos();
 

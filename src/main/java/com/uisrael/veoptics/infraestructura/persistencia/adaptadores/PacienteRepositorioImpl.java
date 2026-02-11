@@ -28,7 +28,7 @@ public class PacienteRepositorioImpl implements IPacienteRepositorio {
 
 	@Override
 	public Optional<Paciente> buscarPorId(int id) {
-		return jpaPacienteRepositorio.findById(id).map(entityPacienteMapper:: toDomain);
+		return jpaPacienteRepositorio.findById(id).map(entityPacienteMapper::toDomain);
 	}
 
 	@Override
@@ -40,6 +40,44 @@ public class PacienteRepositorioImpl implements IPacienteRepositorio {
 	public void eliminar(int id) {
 		jpaPacienteRepositorio.deleteById(id);
 
+	}
+
+	@Override
+	public boolean existePorCi(String ci) {
+		return jpaPacienteRepositorio.existsByCi(ci);
+	}
+
+	@Override
+	public boolean existePorCorreo(String correo) {
+		return jpaPacienteRepositorio.existsByCorreo(correo);
+	}
+
+	@Override
+	public boolean existePorCiYNoId(String ci, int idPaciente) {
+		return jpaPacienteRepositorio.existsByCiAndIdPacienteNot(ci, idPaciente);
+	}
+
+	@Override
+	public boolean existePorCorreoYNoId(String correo, int idPaciente) {
+		return jpaPacienteRepositorio.existsByCorreoAndIdPacienteNot(correo, idPaciente);
+	}
+
+	@Override
+	public Paciente actualizar(Paciente paciente) {
+		jpaPacienteRepositorio.actualizarDatos(paciente.getIdPaciente(), paciente.getNombre(), paciente.getApellido(),
+				paciente.getCi(), paciente.getFecNacimiento(), paciente.getDireccion(), paciente.getTelefono(),
+				paciente.getCorreo(), paciente.getEstado());
+		return paciente;
+	}
+
+	@Override
+	public boolean existePorTelefono(String telefono) {
+		return jpaPacienteRepositorio.existsByTelefono(telefono);
+	}
+
+	@Override
+	public boolean existePorTelefonoYNoId(String telefono, int idPaciente) {
+		return jpaPacienteRepositorio.existsByTelefonoAndIdPacienteNot(telefono, idPaciente);
 	}
 
 }
