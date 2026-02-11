@@ -15,5 +15,7 @@ public interface IOptometristaCasoUso {
 	List<Optometrista>listar ();
 	
 	void eliminar(int id);
+	
+	Optometrista actualizarDatos(Optometrista optometrista);
 
 }

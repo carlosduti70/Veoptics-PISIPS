@@ -35,7 +35,6 @@ public class UsuarioControlador {
 	private final IUsuarioDtoMapper mapper;// mapeadores
 
 	public UsuarioControlador(IUsuarioCasoUso usuarioCasoUso, IUsuarioDtoMapper mapper) {
-		super();
 		this.usuarioCasoUso = usuarioCasoUso;
 		this.mapper = mapper;
 	}

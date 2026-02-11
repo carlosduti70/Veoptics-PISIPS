@@ -9,6 +9,8 @@ import com.uisrael.veoptics.infraestructura.persistencia.jpa.OptometristaJpa;
 import com.uisrael.veoptics.infraestructura.persistencia.mapeadores.IOptometristaJpaMapper;
 import com.uisrael.veoptics.infraestructura.repositorios.IOptometristaJpaRepositorio;
 
+import jakarta.transaction.Transactional;
+
 public class OptometristaRepositorioImpl implements IOptometristaRepositorio {
 	private final IOptometristaJpaRepositorio jpaOptometristaRepositorio;
 	private final IOptometristaJpaMapper entityOptometristaMapper;
@@ -44,8 +46,37 @@ public class OptometristaRepositorioImpl implements IOptometristaRepositorio {
 
 	@Override
 	public Optional<Optometrista> buscarPorIdUsuario(int idUsuario) {
-		// TODO Auto-generated method stub
 		return jpaOptometristaRepositorio.findByUsuarioIdUsuario(idUsuario).map(entityOptometristaMapper::toDomain);
+	}
+
+	@Override
+	public boolean existePorRegistroProfesional(String registroProfesional) {
+		return jpaOptometristaRepositorio.existsByRegistroProfesional(registroProfesional);
+	}
+
+	@Override
+	public boolean existePorTelefono(String telefono) {
+		return jpaOptometristaRepositorio.existsByTelefono(telefono);
+	}
+
+	@Override
+	@Transactional
+	public Optometrista actualizar(Optometrista optometrista) {
+		jpaOptometristaRepositorio.actualizarDatos(optometrista.getIdOptometrista(),
+				optometrista.getRegistroProfesional(), optometrista.getTelefono(), optometrista.getEstado());
+
+		return optometrista;
+	}
+
+	@Override
+	public boolean existePorRegistroProfesionalYNoId(String registroProfesional, int idOptometrista) {
+		return jpaOptometristaRepositorio.existsByRegistroProfesionalAndIdOptometristaNot(registroProfesional,
+				idOptometrista);
+	}
+
+	@Override
+	public boolean existePorTelefonoYNoId(String telefono, int idOptometrista) {
+		return jpaOptometristaRepositorio.existsByTelefonoAndIdOptometristaNot(telefono, idOptometrista);
 	}
 
 }

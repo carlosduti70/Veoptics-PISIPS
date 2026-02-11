@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uisrael.veoptics.aplicacion.casouso.entradas.IOptometristaCasoUso;
 import com.uisrael.veoptics.dominio.entidades.Optometrista;
 import com.uisrael.veoptics.presentacion.dto.request.OptometristaRequestDTO;
+import com.uisrael.veoptics.presentacion.dto.request.OptometristaUpdateDTO;
 import com.uisrael.veoptics.presentacion.dto.response.OptometristaResponseDTO;
 import com.uisrael.veoptics.presentacion.mapeadores.IOptometristaDtoMapper;
 
@@ -31,8 +33,6 @@ public class OptometristaControlador {
 	private final IOptometristaDtoMapper mapper;// mapeadores
 
 	public OptometristaControlador(IOptometristaCasoUso optometristaCasoUso, IOptometristaDtoMapper mapper) {
-
-		super();
 		this.optometristaCasoUso = optometristaCasoUso;
 		this.mapper = mapper;
 
@@ -58,6 +58,11 @@ public class OptometristaControlador {
 
 	public OptometristaResponseDTO crear(@Valid @RequestBody OptometristaRequestDTO request) {
 		return mapper.toResponseDto(optometristaCasoUso.crear(mapper.toDomain(request)));
+	}
+
+	@PutMapping("/actualizar")
+	public OptometristaResponseDTO actualizarinformacion(@Valid @RequestBody OptometristaUpdateDTO request) {
+		return mapper.toResponseDto(optometristaCasoUso.actualizarDatos(mapper.toDomain(request)));
 	}
 
 }

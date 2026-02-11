@@ -34,11 +34,11 @@ public interface IUsuarioJpaRepositorio extends JpaRepository<UsuarioJpa, Intege
 
 	@Modifying
 	@Query("UPDATE UsuarioJpa u SET " + "u.nombre = :nombre, " + "u.apellido = :apellido, " + "u.cedula = :cedula, "
-			+ "u.correo = :correo, " + "u.estado = :estado, " + "u.rol = :rol " + // Actualizamos la relación del Rol
+			+ "u.correo = :correo, " + "u.estado = :estado, " + "u.rol = :rol " +
 			"WHERE u.idUsuario = :idUsuario")
 	void actualizarDatosGenerales(@Param("idUsuario") int idUsuario, @Param("nombre") String nombre,
 			@Param("apellido") String apellido, @Param("cedula") String cedula, @Param("correo") String correo,
-			@Param("estado") boolean estado, @Param("rol") RolJpa rol // Pasamos la entidad RolJpa
+			@Param("estado") boolean estado, @Param("rol") RolJpa rol
 	);
 
 }

@@ -14,4 +14,6 @@ public interface IPacienteCasoUso {
 
 	void eliminar(int id);
 
+	Paciente actualizarDatos(Paciente paciente);
+
 }

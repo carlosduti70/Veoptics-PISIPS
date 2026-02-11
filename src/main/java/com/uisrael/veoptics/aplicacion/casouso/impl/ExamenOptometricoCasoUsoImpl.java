@@ -24,28 +24,53 @@ public class ExamenOptometricoCasoUsoImpl implements IExamenOptometricoCasoUso {
 
 	@Override
 	public ExamenOptometrico crear(ExamenOptometrico examenoptometricoDesdeWeb) {
-		Paciente pacienteEnviado = pacienteRepositorio
-				.buscarPorId(examenoptometricoDesdeWeb.getPaciente().getIdPaciente())
-				.orElseThrow(() -> new RuntimeException("El paciente especificado no existe"));
-		Optometrista optometristaEnviado = optometristaRepositorio
-				.buscarPorId(examenoptometricoDesdeWeb.getOptometrista().getIdOptometrista())
-				.orElseThrow(() -> new RuntimeException("El optometrista especificado no existe"));
+	    // 1. Buscamos Paciente y Optometrista
+	    Paciente pacienteEnviado = pacienteRepositorio
+	            .buscarPorId(examenoptometricoDesdeWeb.getPaciente().getIdPaciente())
+	            .orElseThrow(() -> new RuntimeException("El paciente especificado no existe"));
+	            
+	    Optometrista optometristaEnviado = optometristaRepositorio
+	            .buscarPorId(examenoptometricoDesdeWeb.getOptometrista().getIdOptometrista())
+	            .orElseThrow(() -> new RuntimeException("El optometrista especificado no existe"));
 
-		ExamenOptometrico examenFinal = new ExamenOptometrico(examenoptometricoDesdeWeb.getIdExamen(),
-				examenoptometricoDesdeWeb.getFecha(), examenoptometricoDesdeWeb.getEsferaOd(),
-				examenoptometricoDesdeWeb.getCilindroOd(), examenoptometricoDesdeWeb.getEjeOd(),
-				examenoptometricoDesdeWeb.getAdicionOd(), examenoptometricoDesdeWeb.getAgudezaVisualLejosOd(),
-				examenoptometricoDesdeWeb.getAgudezaVisualCercaOd(), examenoptometricoDesdeWeb.getAlturaOd(),
-				examenoptometricoDesdeWeb.getEsferaOi(), examenoptometricoDesdeWeb.getCilindroOi(),
-				examenoptometricoDesdeWeb.getEjeOi(), examenoptometricoDesdeWeb.getAdicionOi(),
-				examenoptometricoDesdeWeb.getAgudezaVisualLejosOi(),
-				examenoptometricoDesdeWeb.getAgudezaVisualCercaOi(), examenoptometricoDesdeWeb.getAlturaOi(),
-				examenoptometricoDesdeWeb.getDnpOi(), examenoptometricoDesdeWeb.getAlturaOi(),
-				examenoptometricoDesdeWeb.getDiagnostico(), examenoptometricoDesdeWeb.getVisionCercana(),
-				examenoptometricoDesdeWeb.getVisionLejana(), examenoptometricoDesdeWeb.getPercepcionColores(),
-				examenoptometricoDesdeWeb.getColoresVisibles(), pacienteEnviado, optometristaEnviado);
+	    // 2. Creamos el objeto RESPETANDO EL ORDEN EXACTO DE LA ENTIDAD
+	    ExamenOptometrico examenFinal = new ExamenOptometrico(
+	            examenoptometricoDesdeWeb.getIdExamen(),
+	            examenoptometricoDesdeWeb.getFecha(),
+	            
+	            // --- OJO DERECHO (OD) ---
+	            examenoptometricoDesdeWeb.getEsferaOd(),
+	            examenoptometricoDesdeWeb.getCilindroOd(),
+	            examenoptometricoDesdeWeb.getEjeOd(),
+	            examenoptometricoDesdeWeb.getAdicionOd(),
+	            examenoptometricoDesdeWeb.getAgudezaVisualLejosOd(),
+	            examenoptometricoDesdeWeb.getAgudezaVisualCercaOd(),
+	            examenoptometricoDesdeWeb.getDnpOd(),     // <--- AQUÍ FALTABA ESTE CAMPO
+	            examenoptometricoDesdeWeb.getAlturaOd(),  // <--- Este estaba desplazado
+	            
+	            // --- OJO IZQUIERDO (OI) ---
+	            examenoptometricoDesdeWeb.getEsferaOi(),
+	            examenoptometricoDesdeWeb.getCilindroOi(),
+	            examenoptometricoDesdeWeb.getEjeOi(),
+	            examenoptometricoDesdeWeb.getAdicionOi(),
+	            examenoptometricoDesdeWeb.getAgudezaVisualLejosOi(),
+	            examenoptometricoDesdeWeb.getAgudezaVisualCercaOi(),
+	            examenoptometricoDesdeWeb.getDnpOi(),     // <--- Orden corregido
+	            examenoptometricoDesdeWeb.getAlturaOi(),  // <--- Orden corregido
+	            
+	            // --- OTROS DATOS ---
+	            examenoptometricoDesdeWeb.getDiagnostico(),
+	            examenoptometricoDesdeWeb.getVisionCercana(),
+	            examenoptometricoDesdeWeb.getVisionLejana(),
+	            examenoptometricoDesdeWeb.getPercepcionColores(),
+	            examenoptometricoDesdeWeb.getColoresVisibles(),
+	            
+	            // --- RELACIONES ---
+	            pacienteEnviado,
+	            optometristaEnviado
+	    );
 
-		return repositorio.guardar(examenFinal);
+	    return repositorio.guardar(examenFinal);
 	}
 
 	@Override
