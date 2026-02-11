@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/optometrista")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://veoptics-pisips-front-jeriq35cu-carlosduti70s-projects.vercel.app")
 public class OptometristaControlador {
 	// dependencias de la arquitectura
 	private final IOptometristaCasoUso optometristaCasoUso;// casos de uso

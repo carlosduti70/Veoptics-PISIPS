@@ -27,7 +27,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://veoptics-pisips-front-jeriq35cu-carlosduti70s-projects.vercel.app")
 public class UsuarioControlador {
 
 	// dependencias de la arquitectura

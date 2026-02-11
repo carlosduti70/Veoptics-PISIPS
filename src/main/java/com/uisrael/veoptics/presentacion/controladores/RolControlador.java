@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/rol")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://veoptics-pisips-front-jeriq35cu-carlosduti70s-projects.vercel.app")
 public class RolControlador {
 	
 	private final IRolCasoUso rolCasoUso;

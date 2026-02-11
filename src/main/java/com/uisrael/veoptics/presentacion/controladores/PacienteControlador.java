@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/paciente")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://veoptics-pisips-front-jeriq35cu-carlosduti70s-projects.vercel.app")
 public class PacienteControlador {
 
 	// dependencias de la arquitectura
